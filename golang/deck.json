@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0.0",
+  "id": "a8f9c2d1-4b1a-4c92-8f3e-1d5e6a9f8b22",
+  "name": "Golang Concurrency Interview Prep",
+  "description": "20 high-level concurrency questions frequently asked in Big Tech interviews.",
+  "cards": [
+    {
+      "id": "9f98c629-6153-56b5-8792-2bdfdffe7d81",
+      "front": "1. What is the difference between concurrency and parallelism?",
+      "back": "Concurrency is dealing with lots of things at once (composition of tasks); Parallelism is doing lots of things at once (execution of tasks)."
+    },
+    {
+      "id": "583e4152-a862-546a-8ccc-0f0d1959e757",
+      "front": "2. How does the Go scheduler (G-M-P model) work?",
+      "back": "G (Goroutine), M (Machine/Thread), and P (Processor/Context) work together to multiplex many goroutines onto fewer OS threads."
+    },
+    {
+      "id": "d7347baa-52ae-5be8-8dff-5deaf81f4051",
+      "front": "3. What happens if you send to a nil channel?",
+      "back": "Sending to a nil channel blocks the goroutine forever, causing a deadlock if no other path exists."
+    },
+    {
+      "id": "80c0cdaf-eb68-52a8-b65b-0701bae11ced",
+      "front": "4. What is the purpose of the `select` statement?",
+      "back": "`select` lets a goroutine wait on multiple communication operations, choosing the first one that is ready."
+    },
+    {
+      "id": "0c826cca-2d28-5905-8c37-288287aa2775",
+      "front": "5. Can you have a race condition in a thread-safe language like Go?",
+      "back": "Yes. Using shared memory without proper synchronization (mutexes, channels) leads to race conditions even with Go's memory model."
+    },
+    {
+      "id": "abe9cd56-007c-579a-bfef-567eeff4f434",
+      "front": "6. What is the difference between `sync.Mutex` and `sync.RWMutex`?",
+      "back": "`RWMutex` allows multiple readers or a single writer, whereas `Mutex` allows only one goroutine access regardless of the operation."
+    },
+    {
+      "id": "10acf4a4-b6ab-5f07-b015-8af2e4bde6f0",
+      "front": "7. What is a \"buffered channel\" and when should you use it?",
+      "back": "A buffered channel holds a specific number of elements; it is used to decouple sender/receiver speed and prevent blocking."
+    },
+    {
+      "id": "a50d066d-e042-5c2b-a655-807173335bb9",
+      "front": "8. How do you detect race conditions in Go?",
+      "back": "Use the built-in race detector by running your code with the `-race` flag: `go run -race main.go`."
+    },
+    {
+      "id": "043ea39e-3e67-564f-a176-0faf7340c644",
+      "front": "9. How do you gracefully stop a goroutine?",
+      "back": "Pass a `context.Context` to the goroutine and listen to its `Done()` channel to trigger a shutdown."
+    },
+    {
+      "id": "9334b52a-4112-5a23-8f54-9739f2f5a61c",
+      "front": "10. Why is `sync.WaitGroup` used?",
+      "back": "It is used to wait for a collection of goroutines to finish their execution before proceeding."
+    },
+    {
+      "id": "cec9d682-b7b1-505d-a7ab-fcb33265b9d7",
+      "front": "11. What is the danger of `time.Sleep` in production code?",
+      "back": "It is imprecise and inefficient; using `context` or channels for synchronization is preferred for responsiveness."
+    },
+    {
+      "id": "9f0e9548-1c4f-5736-951c-420754248cae",
+      "front": "12. How does Go’s memory model handle synchronization?",
+      "back": "It defines the \"happens-before\" relationship to guarantee memory visibility between goroutines."
+    },
+    {
+      "id": "7e844812-1784-51d1-bbc3-0c20da987c17",
+      "front": "13. What is the `fan-out` and `fan-in` pattern?",
+      "back": "Fan-out distributes work across multiple goroutines; fan-in multiplexes their results back into a single channel."
+    },
+    {
+      "id": "e094835e-0133-5714-8af1-01072fd3b1d0",
+      "front": "14. What are the common pitfalls when using channels?",
+      "back": "Deadlocks, leaking goroutines, sending to/closing nil/closed channels."
+    },
+    {
+      "id": "6cf40ea2-0efa-5f34-984c-60ada9830d98",
+      "front": "15. How do you implement a singleton pattern in Go?",
+      "back": "Use `sync.Once` to ensure a piece of code (like initialization) runs exactly once."
+    },
+    {
+      "id": "a6859cf4-af0b-5149-8d32-85322826d697",
+      "front": "16. What is an atomic operation and why use `sync/atomic`?",
+      "back": "Atomic operations are CPU-level instructions that complete without interruption; they are faster than mutexes for simple counter increments."
+    },
+    {
+      "id": "f46772eb-61d6-5c9b-9b9a-352a353bfbd9",
+      "front": "17. What is a \"goroutine leak\"?",
+      "back": "A goroutine that starts but never finishes or sends data back, remaining in memory indefinitely."
+    },
+    {
+      "id": "c88cdca9-fef9-5889-ae15-3dc57dee14cf",
+      "front": "18. How does `sync.Map` differ from a standard `map` with a `Mutex`?",
+      "back": "`sync.Map` is optimized for concurrent scenarios where keys are often stable (read-heavy or write-once-read-many)."
+    },
+    {
+      "id": "6539b188-4f6e-5f78-95b2-07b8a8af5b1e",
+      "front": "19. What is the purpose of `runtime.Gosched()`?",
+      "back": "It yields the processor, allowing other goroutines to run."
+    },
+    {
+      "id": "97bc8617-4b87-5c0e-b891-b05a88fd4916",
+      "front": "20. When should you prefer channels over mutexes?",
+      "back": "Use channels when passing ownership of data or coordinating sequences; use mutexes for protecting internal state/caching."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "golang",
+    "concurrency",
+    "backend"
+  ]
+}
