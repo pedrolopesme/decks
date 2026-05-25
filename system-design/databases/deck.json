@@ -1,71 +1,115 @@
----
-id: 1f4b8c92-7d3a-4e5b-8f1c-6d2a9e3b4f55
-name: Relational vs. Non-Relational Databases Interview Prep
-description: 20 comparative questions focusing on data modeling, scaling, and architectural trade-offs between RDBMS and NoSQL systems.
-author: Gemini
-tags:
-  - databases
-  - system-design
-  - rdbms
-  - nosql
----
-
-## 1. What is the fundamental difference in data structure between RDBMS and NoSQL?
-RDBMS stores data in structured tables with predefined schemas (rows/columns); NoSQL uses flexible data models like documents, key-values, wide-columns, or graphs.
-
-## 2. When does RDBMS provide a superior advantage?
-When complex relationships, transactional integrity (ACID), and strict data schema enforcement are required.
-
-## 3. What is "Schema Flexibility" and how does it benefit NoSQL?
-It allows developers to change the data structure on the fly without downtime, which is vital for agile development and evolving data requirements.
-
-## 4. Compare ACID (RDBMS) vs. BASE (NoSQL) consistency models.
-ACID prioritizes immediate consistency and reliability; BASE prioritizes availability and performance, accepting that data will become consistent eventually.
-
-## 5. How do horizontal scaling strategies differ between RDBMS and NoSQL?
-RDBMS typically scales vertically; horizontal scaling (sharding) is complex. NoSQL is designed for horizontal scaling from the ground up, making it easier to distribute across commodity hardware.
-
-## 6. What is a "Join" and why is it expensive in distributed NoSQL?
-A Join combines rows from two tables. In NoSQL, data is often denormalized to avoid joins, as performing joins across distributed nodes is network-intensive and slow.
-
-## 7. When should you choose a Document store (e.g., MongoDB) over a Key-Value store (e.g., Redis)?
-Choose Document stores for complex, nested data that requires indexing and querying; choose Key-Value stores for ultra-fast, simple retrieval by primary key.
-
-## 8. What is the "Impedance Mismatch" problem in RDBMS?
-It refers to the difficulty of mapping object-oriented application code to relational table structures, often solved by ORMs (which can introduce performance overhead).
-
-## 9. How do you handle complex relationships in a non-relational database?
-You either denormalize data (nesting it), use application-level joins, or utilize a Graph Database (e.g., Neo4j) specifically designed for relationships.
-
-## 10. Why is RDBMS considered "Strict" regarding schema?
-It enforces data types, constraints, and relationships at the database level, ensuring data integrity but making schema migrations difficult at scale.
-
-## 11. What is "Polyglot Persistence"?
-The practice of using multiple database technologies in a single system to meet different needs (e.g., RDBMS for transactional data, Redis for caching, Cassandra for logs).
-
-## 12. How does RDBMS handle concurrency compared to NoSQL?
-RDBMS typically uses locking mechanisms (pessimistic/optimistic) to ensure consistency; NoSQL often uses versioning or Last-Write-Wins policies to allow higher throughput.
-
-## 13. Which type of database is better for unstructured data?
-NoSQL, as it can store and index binary, semi-structured, or completely schema-less data (like JSON or Blobs) more efficiently than RDBMS.
-
-## 14. What are the trade-offs of denormalization in NoSQL?
-Pros: Faster read performance and reduced join complexity. Cons: Potential data inconsistency and increased storage usage due to data duplication.
-
-## 15. Can NoSQL databases support ACID transactions?
-Many modern NoSQL databases (like MongoDB or FoundationDB) now offer multi-document ACID transactions, though they may have performance impacts compared to RDBMS.
-
-## 16. What is a "Wide-Column" store and what is its primary use case?
-It stores data in columns rather than rows (e.g., Cassandra). It is ideal for massive datasets where you need high-speed writes and analytical queries over specific columns.
-
-## 17. Why is RDBMS often the "default" choice for financial applications?
-Due to its proven, rigid adherence to ACID properties, which is non-negotiable for ensuring that money is never lost or incorrectly recorded during concurrent updates.
-
-## 18. How do indexing strategies differ between the two?
-RDBMS uses B-Tree indexes for efficient searching/sorting in tables; NoSQL often uses specific indexes optimized for its data type (e.g., inverted indexes for search, geospatial indexes for maps).
-
-## 19. What is the cost of schema migration in RDBMS?
-It often requires `ALTER TABLE` operations, which can lock massive tables for extended periods and cause application downtime if not handled carefully.
-
-## 20. How do you decide between RDBMS and NoSQL for a new project?
-Evaluate the requirements: Do you need complex joins, strict ACID, and stable data? Use RDBMS. Do you need high scale, schema flexibility, and rapid read/write throughput? Use NoSQL.
+{
+  "schema_version": "1.0.0",
+  "id": "1f4b8c92-7d3a-4e5b-8f1c-6d2a9e3b4f55",
+  "name": "Relational vs. Non-Relational Databases Interview Prep",
+  "description": "20 comparative questions focusing on data modeling, scaling, and architectural trade-offs between RDBMS and NoSQL systems.",
+  "cards": [
+    {
+      "id": "2dcef5ed-20f3-5d1c-990d-84adc33a1bac",
+      "front": "1. What is the fundamental difference in data structure between RDBMS and NoSQL?",
+      "back": "RDBMS stores data in structured tables with predefined schemas (rows/columns); NoSQL uses flexible data models like documents, key-values, wide-columns, or graphs."
+    },
+    {
+      "id": "57bd1576-f235-59a2-b551-cfc7bf959c0f",
+      "front": "2. When does RDBMS provide a superior advantage?",
+      "back": "When complex relationships, transactional integrity (ACID), and strict data schema enforcement are required."
+    },
+    {
+      "id": "b35ae970-f1c3-59c7-a2ce-58c4cf99dc58",
+      "front": "3. What is \"Schema Flexibility\" and how does it benefit NoSQL?",
+      "back": "It allows developers to change the data structure on the fly without downtime, which is vital for agile development and evolving data requirements."
+    },
+    {
+      "id": "725c707f-8e2b-5467-9bf8-dde145ea15d7",
+      "front": "4. Compare ACID (RDBMS) vs. BASE (NoSQL) consistency models.",
+      "back": "ACID prioritizes immediate consistency and reliability; BASE prioritizes availability and performance, accepting that data will become consistent eventually."
+    },
+    {
+      "id": "a62a532a-0128-5d0a-bce7-4f0d342b1e54",
+      "front": "5. How do horizontal scaling strategies differ between RDBMS and NoSQL?",
+      "back": "RDBMS typically scales vertically; horizontal scaling (sharding) is complex. NoSQL is designed for horizontal scaling from the ground up, making it easier to distribute across commodity hardware."
+    },
+    {
+      "id": "3b5ac8d4-edbb-558f-ba81-a49a5ed9be24",
+      "front": "6. What is a \"Join\" and why is it expensive in distributed NoSQL?",
+      "back": "A Join combines rows from two tables. In NoSQL, data is often denormalized to avoid joins, as performing joins across distributed nodes is network-intensive and slow."
+    },
+    {
+      "id": "e9439417-ce1c-5c71-af15-017f37649b09",
+      "front": "7. When should you choose a Document store (e.g., MongoDB) over a Key-Value store (e.g., Redis)?",
+      "back": "Choose Document stores for complex, nested data that requires indexing and querying; choose Key-Value stores for ultra-fast, simple retrieval by primary key."
+    },
+    {
+      "id": "d8512c4f-d48d-50d0-8081-7ad1647a8966",
+      "front": "8. What is the \"Impedance Mismatch\" problem in RDBMS?",
+      "back": "It refers to the difficulty of mapping object-oriented application code to relational table structures, often solved by ORMs (which can introduce performance overhead)."
+    },
+    {
+      "id": "89c122c6-0376-5bfd-8343-768f2d14f6f8",
+      "front": "9. How do you handle complex relationships in a non-relational database?",
+      "back": "You either denormalize data (nesting it), use application-level joins, or utilize a Graph Database (e.g., Neo4j) specifically designed for relationships."
+    },
+    {
+      "id": "ab0a54d7-a2f7-58fc-8ee5-e0a9d5929be9",
+      "front": "10. Why is RDBMS considered \"Strict\" regarding schema?",
+      "back": "It enforces data types, constraints, and relationships at the database level, ensuring data integrity but making schema migrations difficult at scale."
+    },
+    {
+      "id": "f7bbd402-3010-518e-b5f2-a681ef34cbe2",
+      "front": "11. What is \"Polyglot Persistence\"?",
+      "back": "The practice of using multiple database technologies in a single system to meet different needs (e.g., RDBMS for transactional data, Redis for caching, Cassandra for logs)."
+    },
+    {
+      "id": "b5de6cee-ac88-5f05-bc62-253bd1c419c4",
+      "front": "12. How does RDBMS handle concurrency compared to NoSQL?",
+      "back": "RDBMS typically uses locking mechanisms (pessimistic/optimistic) to ensure consistency; NoSQL often uses versioning or Last-Write-Wins policies to allow higher throughput."
+    },
+    {
+      "id": "b1c99b5a-3909-5635-8fbd-90131b661e2e",
+      "front": "13. Which type of database is better for unstructured data?",
+      "back": "NoSQL, as it can store and index binary, semi-structured, or completely schema-less data (like JSON or Blobs) more efficiently than RDBMS."
+    },
+    {
+      "id": "1c267bf6-2586-5460-bc90-4cc967ec7a07",
+      "front": "14. What are the trade-offs of denormalization in NoSQL?",
+      "back": "Pros: Faster read performance and reduced join complexity. Cons: Potential data inconsistency and increased storage usage due to data duplication."
+    },
+    {
+      "id": "9fb4c7fc-3f84-55f0-81c4-ee6d444e8038",
+      "front": "15. Can NoSQL databases support ACID transactions?",
+      "back": "Many modern NoSQL databases (like MongoDB or FoundationDB) now offer multi-document ACID transactions, though they may have performance impacts compared to RDBMS."
+    },
+    {
+      "id": "00659a82-ccc3-5efe-b462-15e7aa934645",
+      "front": "16. What is a \"Wide-Column\" store and what is its primary use case?",
+      "back": "It stores data in columns rather than rows (e.g., Cassandra). It is ideal for massive datasets where you need high-speed writes and analytical queries over specific columns."
+    },
+    {
+      "id": "25a23615-90c0-59d4-8859-67e10d43586a",
+      "front": "17. Why is RDBMS often the \"default\" choice for financial applications?",
+      "back": "Due to its proven, rigid adherence to ACID properties, which is non-negotiable for ensuring that money is never lost or incorrectly recorded during concurrent updates."
+    },
+    {
+      "id": "1c7cbe4c-262b-59f7-88ee-eb4b14c49e46",
+      "front": "18. How do indexing strategies differ between the two?",
+      "back": "RDBMS uses B-Tree indexes for efficient searching/sorting in tables; NoSQL often uses specific indexes optimized for its data type (e.g., inverted indexes for search, geospatial indexes for maps)."
+    },
+    {
+      "id": "7317b31c-6169-5861-83df-ff186bbff199",
+      "front": "19. What is the cost of schema migration in RDBMS?",
+      "back": "It often requires `ALTER TABLE` operations, which can lock massive tables for extended periods and cause application downtime if not handled carefully."
+    },
+    {
+      "id": "78c75f1b-621c-5a49-9dd2-eb78d828f93b",
+      "front": "20. How do you decide between RDBMS and NoSQL for a new project?",
+      "back": "Evaluate the requirements: Do you need complex joins, strict ACID, and stable data? Use RDBMS. Do you need high scale, schema flexibility, and rapid read/write throughput? Use NoSQL."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "databases",
+    "system-design",
+    "rdbms",
+    "nosql"
+  ]
+}

@@ -1,70 +1,114 @@
----
-id: 6f4d9b23-1c8a-4d7e-9f3a-2b7d5e4a8c11
-name: Scalability Interview Prep
-description: 20 technical questions on system scalability, covering data partitioning, consensus, and load balancing for high-scale environments.
-author: Gemini
-tags:
-  - system-design
-  - scalability
-  - distributed-systems
----
-
-## 1. What is the fundamental difference between Vertical and Horizontal scaling?
-Vertical scaling (scaling up) increases the resources (CPU, RAM) of a single node; Horizontal scaling (scaling out) adds more nodes to the system to distribute the load.
-
-## 2. What is "Consistent Hashing" and why is it used?
-It is a hashing technique that distributes keys across nodes such that only $k/n$ keys need to be remapped when a node is added or removed, minimizing cache misses or data migration.
-
-## 3. Explain the "CAP Theorem" in the context of distributed databases.
-It states that a distributed system can only guarantee two out of three: Consistency, Availability, and Partition Tolerance. In the presence of a network partition, you must choose between C or A.
-
-## 4. How does "Database Sharding" improve write scalability?
-It partitions data across multiple physical databases, allowing parallel writes to different shards and reducing the I/O load on any single database instance.
-
-## 5. What are the pros and cons of Master-Slave vs. Multi-Master replication?
-Master-Slave simplifies writes but risks a single point of failure; Multi-Master improves availability and local write latency but introduces complex conflict resolution.
-
-## 6. What is the "Load Balancer" bottleneck?
-If the load balancer itself is not scaled (e.g., using a cluster of LBs or DNS round-robin), it becomes the single point of failure and a throughput limiter for the entire cluster.
-
-## 7. How do you scale stateful services?
-Move the state to an external, scalable distributed store (like Redis or Cassandra) or implement sticky sessions if the state must reside in-process.
-
-## 8. What is the "Thundering Herd" problem in scaling?
-It occurs when a cache or node fails, causing all concurrent requests to bypass the cache and slam the backend database simultaneously.
-
-## 9. What is the difference between Synchronous and Asynchronous replication?
-Synchronous replication ensures data consistency across replicas before confirming the write, but increases latency; Asynchronous replication improves write performance at the risk of losing recent data on failover.
-
-## 10. When would you use a "Global Server Load Balancing" (GSLB)?
-To route users to the geographically closest data center, reducing network latency and improving availability by failing over to a healthy region.
-
-## 11. Explain the concept of "Data Locality".
-It is the strategy of moving the computation to where the data resides, rather than moving the data to the computation, to minimize network bandwidth and latency.
-
-## 12. What is the role of a "Circuit Breaker" in a scalable system?
-It prevents a failing service from causing cascading failures by "tripping" the circuit, immediately rejecting requests to the failing service until it recovers.
-
-## 13. How does "Denormalization" help in read-heavy scaling?
-It reduces the need for expensive "joins" across tables, which are slow to execute in distributed/sharded databases.
-
-## 14. What is the trade-off of "Eventual Consistency"?
-It provides high availability and low latency by allowing temporary data discrepancies across replicas, requiring the application to handle stale reads.
-
-## 15. How do "Read Replicas" help with scalability?
-They offload read traffic from the primary master database, allowing the system to scale reads linearly by adding more read nodes.
-
-## 16. What is the purpose of "Bulkheading" in distributed systems?
-It is a fault-tolerance pattern that isolates resources (e.g., thread pools or connections) so that if one service fails, it only consumes its dedicated resources and doesn't exhaust the entire system.
-
-## 17. Why is "Multi-Tenancy" a scalability challenge?
-It requires strict resource isolation to prevent "noisy neighbor" scenarios where one high-traffic tenant starves others of resources.
-
-## 18. How do you scale search functionality?
-Use an inverted index and distribute it across multiple search nodes (e.g., Elasticsearch shards) based on document ID or term ranges.
-
-## 19. What is the "PACELC" theorem?
-It extends CAP: If there is a Partition (P), trade-off between Availability (A) and Consistency (C); Else (E), trade-off between Latency (L) and Consistency (C).
-
-## 20. How do you handle massive spikes in traffic (Burst Scaling)?
-Use auto-scaling groups based on real-time metrics, move heavy processing to background queues, and rely on aggressive edge caching (CDN).
+{
+  "schema_version": "1.0.0",
+  "id": "6f4d9b23-1c8a-4d7e-9f3a-2b7d5e4a8c11",
+  "name": "Scalability Interview Prep",
+  "description": "20 technical questions on system scalability, covering data partitioning, consensus, and load balancing for high-scale environments.",
+  "cards": [
+    {
+      "id": "ca217b5e-3c90-5722-8f38-583edd83f144",
+      "front": "1. What is the fundamental difference between Vertical and Horizontal scaling?",
+      "back": "Vertical scaling (scaling up) increases the resources (CPU, RAM) of a single node; Horizontal scaling (scaling out) adds more nodes to the system to distribute the load."
+    },
+    {
+      "id": "d40a91af-a1b3-54ae-b0a1-986a640188e2",
+      "front": "2. What is \"Consistent Hashing\" and why is it used?",
+      "back": "It is a hashing technique that distributes keys across nodes such that only $k/n$ keys need to be remapped when a node is added or removed, minimizing cache misses or data migration."
+    },
+    {
+      "id": "2dfaf9ba-e04e-5933-b353-241ee6e81717",
+      "front": "3. Explain the \"CAP Theorem\" in the context of distributed databases.",
+      "back": "It states that a distributed system can only guarantee two out of three: Consistency, Availability, and Partition Tolerance. In the presence of a network partition, you must choose between C or A."
+    },
+    {
+      "id": "f15731eb-2bbb-516f-961c-ad4833a7203f",
+      "front": "4. How does \"Database Sharding\" improve write scalability?",
+      "back": "It partitions data across multiple physical databases, allowing parallel writes to different shards and reducing the I/O load on any single database instance."
+    },
+    {
+      "id": "c9cbdfd5-e2ea-581b-8b65-9697641848a3",
+      "front": "5. What are the pros and cons of Master-Slave vs. Multi-Master replication?",
+      "back": "Master-Slave simplifies writes but risks a single point of failure; Multi-Master improves availability and local write latency but introduces complex conflict resolution."
+    },
+    {
+      "id": "4fbbb388-0282-527a-8378-7a45e61da642",
+      "front": "6. What is the \"Load Balancer\" bottleneck?",
+      "back": "If the load balancer itself is not scaled (e.g., using a cluster of LBs or DNS round-robin), it becomes the single point of failure and a throughput limiter for the entire cluster."
+    },
+    {
+      "id": "04a8e8c0-98d9-5d54-a17b-8ea2f6533666",
+      "front": "7. How do you scale stateful services?",
+      "back": "Move the state to an external, scalable distributed store (like Redis or Cassandra) or implement sticky sessions if the state must reside in-process."
+    },
+    {
+      "id": "82eee8cb-23e1-5720-b9a9-2016eadc272d",
+      "front": "8. What is the \"Thundering Herd\" problem in scaling?",
+      "back": "It occurs when a cache or node fails, causing all concurrent requests to bypass the cache and slam the backend database simultaneously."
+    },
+    {
+      "id": "022d9254-2058-5dc4-b93d-a4d1b87ae468",
+      "front": "9. What is the difference between Synchronous and Asynchronous replication?",
+      "back": "Synchronous replication ensures data consistency across replicas before confirming the write, but increases latency; Asynchronous replication improves write performance at the risk of losing recent data on failover."
+    },
+    {
+      "id": "a24a10e7-1eda-5130-b0a0-f12ae29609c6",
+      "front": "10. When would you use a \"Global Server Load Balancing\" (GSLB)?",
+      "back": "To route users to the geographically closest data center, reducing network latency and improving availability by failing over to a healthy region."
+    },
+    {
+      "id": "7246f6e9-df86-521b-800c-75d2509edc79",
+      "front": "11. Explain the concept of \"Data Locality\".",
+      "back": "It is the strategy of moving the computation to where the data resides, rather than moving the data to the computation, to minimize network bandwidth and latency."
+    },
+    {
+      "id": "072caee5-4728-5e0d-b518-bb8d79adb835",
+      "front": "12. What is the role of a \"Circuit Breaker\" in a scalable system?",
+      "back": "It prevents a failing service from causing cascading failures by \"tripping\" the circuit, immediately rejecting requests to the failing service until it recovers."
+    },
+    {
+      "id": "30e6eba3-c90a-5a81-a483-1315e9219d6e",
+      "front": "13. How does \"Denormalization\" help in read-heavy scaling?",
+      "back": "It reduces the need for expensive \"joins\" across tables, which are slow to execute in distributed/sharded databases."
+    },
+    {
+      "id": "f6a147af-5f9d-52b5-8731-9bc01002d375",
+      "front": "14. What is the trade-off of \"Eventual Consistency\"?",
+      "back": "It provides high availability and low latency by allowing temporary data discrepancies across replicas, requiring the application to handle stale reads."
+    },
+    {
+      "id": "a2a2fec5-760c-5a62-97c2-362497d3845d",
+      "front": "15. How do \"Read Replicas\" help with scalability?",
+      "back": "They offload read traffic from the primary master database, allowing the system to scale reads linearly by adding more read nodes."
+    },
+    {
+      "id": "0e30000f-7d1d-56da-aa4f-bdda17e879e9",
+      "front": "16. What is the purpose of \"Bulkheading\" in distributed systems?",
+      "back": "It is a fault-tolerance pattern that isolates resources (e.g., thread pools or connections) so that if one service fails, it only consumes its dedicated resources and doesn't exhaust the entire system."
+    },
+    {
+      "id": "582d85e1-9b20-57da-9e17-d9325747e72f",
+      "front": "17. Why is \"Multi-Tenancy\" a scalability challenge?",
+      "back": "It requires strict resource isolation to prevent \"noisy neighbor\" scenarios where one high-traffic tenant starves others of resources."
+    },
+    {
+      "id": "87500b88-fed3-55b8-b4aa-a050d078b4ea",
+      "front": "18. How do you scale search functionality?",
+      "back": "Use an inverted index and distribute it across multiple search nodes (e.g., Elasticsearch shards) based on document ID or term ranges."
+    },
+    {
+      "id": "c08e4c9d-ac8c-5dbd-953e-075f80aea8bd",
+      "front": "19. What is the \"PACELC\" theorem?",
+      "back": "It extends CAP: If there is a Partition (P), trade-off between Availability (A) and Consistency (C); Else (E), trade-off between Latency (L) and Consistency (C)."
+    },
+    {
+      "id": "26687db7-bbe6-5965-baa0-e7ce8a25e2f5",
+      "front": "20. How do you handle massive spikes in traffic (Burst Scaling)?",
+      "back": "Use auto-scaling groups based on real-time metrics, move heavy processing to background queues, and rely on aggressive edge caching (CDN)."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "system-design",
+    "scalability",
+    "distributed-systems"
+  ]
+}

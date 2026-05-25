@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0.0",
+  "id": "3c9b7d2f-4a8e-4f1d-9c3b-5e6f7a8b9c00",
+  "name": "OOP Design Patterns Interview Prep",
+  "description": "20 essential design pattern questions for software engineering interviews, focusing on intent, applicability, and trade-offs.",
+  "cards": [
+    {
+      "id": "88eebb86-cebc-5a33-ad12-30d9358cc2b7",
+      "front": "1. What is the fundamental difference between the Strategy and State patterns?",
+      "back": "Strategy is used to define a family of algorithms that the client can swap; State allows an object to change its behavior when its internal state changes."
+    },
+    {
+      "id": "a06d5a2a-7234-5029-ab73-3d920f842e50",
+      "front": "2. How does the Decorator pattern differ from simple inheritance?",
+      "back": "Decorator adds behavior to individual objects dynamically at runtime, whereas inheritance adds behavior to an entire class hierarchy at compile-time."
+    },
+    {
+      "id": "15144697-b2e0-5450-a984-c8eebfd6b046",
+      "front": "3. When should you use the Singleton pattern and what are the common concerns?",
+      "back": "Use it for shared resources (like DB connections). Concerns include difficulty in unit testing, hidden dependencies, and issues with multi-threaded initialization."
+    },
+    {
+      "id": "c40f2c2f-bff1-5f51-8614-c8d511f990b3",
+      "front": "4. Explain the \"Dependency Inversion Principle\" in the context of the Factory pattern.",
+      "back": "The Factory pattern allows code to depend on abstractions (interfaces) rather than concrete implementations, adhering to the principle that high-level modules should not depend on low-level ones."
+    },
+    {
+      "id": "bebc288b-12a4-5a06-b438-e12dbf3be409",
+      "front": "5. What is the intent of the Adapter pattern?",
+      "back": "To allow two incompatible interfaces to work together by acting as a bridge (wrapper) between them."
+    },
+    {
+      "id": "4ec73128-bc8d-5b34-91cc-05cbad06309e",
+      "front": "6. How does the Proxy pattern differ from the Decorator pattern?",
+      "back": "Decorator adds responsibilities to an object; Proxy controls access to an object (e.g., lazy loading, access control)."
+    },
+    {
+      "id": "e55e7233-f458-544f-99f3-adf372214bb8",
+      "front": "7. What is the \"Observer\" pattern and how is it used in reactive systems?",
+      "back": "It defines a one-to-many dependency so that when one object changes state, all its dependents are notified. It is the backbone of event-driven/reactive programming."
+    },
+    {
+      "id": "7585e247-458f-591d-a08d-f3c4d6418aee",
+      "front": "8. Why would you prefer the Builder pattern over a constructor with many parameters?",
+      "back": "It avoids \"telescoping constructors,\" improves readability, and allows the construction process to be staged or conditional."
+    },
+    {
+      "id": "feaa6321-2fc6-5ce4-a24e-29448775aa36",
+      "front": "9. What is the Command pattern and why is it useful for undo/redo functionality?",
+      "back": "It encapsulates a request as an object, allowing you to parameterize objects with operations and maintain a history of actions for undo/redo."
+    },
+    {
+      "id": "8968b142-8178-5ba0-a6ac-5c9ce159f331",
+      "front": "10. Explain the Template Method pattern.",
+      "back": "It defines the skeleton of an algorithm in a base class, letting subclasses override specific steps without changing the overall structure."
+    },
+    {
+      "id": "9a426922-c85e-5088-be40-527a09e2f8a0",
+      "front": "11. When should you use the Facade pattern?",
+      "back": "To provide a simplified, unified interface to a complex subsystem, reducing the coupling between the client and the subsystem."
+    },
+    {
+      "id": "0a5d631b-e021-5e83-9afa-f7eb10a857f8",
+      "front": "12. What is the difference between the Abstract Factory and the Factory Method?",
+      "back": "Factory Method uses inheritance to let subclasses decide which object to create; Abstract Factory uses object composition to create families of related objects."
+    },
+    {
+      "id": "24527e04-922f-5d5f-8adb-1c14cfbdb0da",
+      "front": "13. How does the Composite pattern handle leaf nodes and container nodes uniformly?",
+      "back": "By defining a common interface for both individual objects and compositions, allowing the client to treat them identically."
+    },
+    {
+      "id": "6f979a5f-d732-5bf2-8c6a-9c6c6bacef4a",
+      "front": "14. What is the Flyweight pattern and when is it applicable?",
+      "back": "It minimizes memory usage by sharing as much data as possible with similar objects—useful when creating a massive number of objects with shared state."
+    },
+    {
+      "id": "4f4004d6-c43f-53f4-8116-04340d305cbb",
+      "front": "15. How do you implement a \"Chain of Responsibility\" pattern?",
+      "back": "Pass a request along a chain of handlers; each handler decides whether to process the request or pass it to the next handler in the chain."
+    },
+    {
+      "id": "a2eef28b-9952-53e4-99e3-0b630042ed4d",
+      "front": "16. What is the Memento pattern?",
+      "back": "It allows an object to capture and externalize its internal state so that it can be restored to this state later, without violating encapsulation."
+    },
+    {
+      "id": "a4a37be3-aa13-5266-9365-9b2c7073faa8",
+      "front": "17. What is the intent of the Bridge pattern?",
+      "back": "To decouple an abstraction from its implementation so that the two can vary independently."
+    },
+    {
+      "id": "cb49d903-ccb4-5555-9323-9810f7885374",
+      "front": "18. Why is the Prototype pattern useful?",
+      "back": "It allows you to create new objects by copying an existing instance (the prototype) rather than using the `new` keyword, which is useful for complex object creation."
+    },
+    {
+      "id": "1e73299c-0d66-5428-8a61-1ffc7f90d477",
+      "front": "19. What is the Visitor pattern and what is its main drawback?",
+      "back": "It lets you add new operations to existing object structures without modifying the structures. The drawback is that it violates encapsulation and is hard to maintain when classes change."
+    },
+    {
+      "id": "61d26640-dd72-5b82-841a-92fc0a464f89",
+      "front": "20. How does the Mediator pattern promote decoupling?",
+      "back": "It restricts direct communications between objects and forces them to collaborate only via a mediator object, reducing the \"spaghetti\" of object-to-object dependencies."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "oop",
+    "design-patterns",
+    "software-engineering"
+  ]
+}
