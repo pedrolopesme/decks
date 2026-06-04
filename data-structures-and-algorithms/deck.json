@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "609583c7-5196-47e7-b17f-101dff94193b",
+  "name": "Data Structures and Algorithms Interview Prep",
+  "description": "20 advanced interview questions covering core data structures, algorithmic patterns, complexity trade-offs, and implementation pitfalls.",
+  "cards": [
+    {
+      "id": "bc7fdcbb-004b-4b77-a710-481884801760",
+      "front": "1. What do time complexity and space complexity actually tell you about an algorithm?",
+      "back": "They describe how runtime and memory grow as input size increases, usually in asymptotic terms like `O(n)` or `O(n log n)`. Interviewers use them to test whether you can reason about scalability, not just write code that works on small inputs."
+    },
+    {
+      "id": "47ea1549-6141-4273-8af2-4cfd9c705bf2",
+      "front": "2. When should you choose an array over a linked list, and when is the reverse true?",
+      "back": "Use arrays when you need fast indexed access, better cache locality, and simpler memory layout. Use linked lists only when insertions and deletions are frequent and you already have the node reference, because traversal is still `O(n)` and memory overhead is higher."
+    },
+    {
+      "id": "e903b95d-a9fb-46e7-a9e7-0c367604bb73",
+      "front": "3. What is the practical difference between a stack and a queue?",
+      "back": "A stack is LIFO, so it fits recursion, backtracking, and undo-like behavior; a queue is FIFO, so it fits scheduling, breadth-first search, and buffering work. The key choice is the order in which tasks should be processed."
+    },
+    {
+      "id": "ba89a47b-e68e-4d1e-94e0-07ff17d794f5",
+      "front": "4. Why are hash tables typically `O(1)` on average, and what breaks that guarantee?",
+      "back": "They use hashing to map keys directly to buckets, so lookups usually avoid scanning the whole collection. Performance degrades when many collisions occur, when resizing is frequent, or when an attacker can force pathological keys."
+    },
+    {
+      "id": "73810089-0ece-41b5-bb74-e86366d0ecf6",
+      "front": "5. What invariant makes binary search correct, and what is the most common implementation mistake?",
+      "back": "Binary search works because each step preserves a sorted interval that still contains the target if it exists. The common bug is off-by-one errors in the boundary update, which can cause infinite loops or skipped elements."
+    },
+    {
+      "id": "f5f468f0-b9b7-44fe-a2cc-461a3fd9b7f9",
+      "front": "6. When is recursion better than iteration, and when is it a liability?",
+      "back": "Recursion is often clearer for tree traversal, divide-and-conquer, and backtracking. It becomes a liability when stack depth is unbounded, tail-call optimization is unavailable, or function-call overhead matters."
+    },
+    {
+      "id": "8d47ee55-5036-4fdb-98b3-9c80a82414af",
+      "front": "7. How do trees differ from graphs in both structure and traversal strategy?",
+      "back": "A tree is a constrained graph with no cycles and usually one root, which makes traversal simpler and guarantees a unique path between nodes. General graphs may contain cycles and disconnected components, so traversal needs a visited set and often multiple starts."
+    },
+    {
+      "id": "d9d966ad-0cd7-4e0b-863b-ce1cd4e33e7c",
+      "front": "8. Heap versus balanced binary search tree: what problem is each better at?",
+      "back": "Use a heap when you repeatedly need the minimum or maximum element and do not care about full ordering. Use a balanced BST when you need ordered iteration, range queries, or efficient search for arbitrary keys."
+    },
+    {
+      "id": "7179385b-1e48-4173-b544-3684be4fe41b",
+      "front": "9. BFS and DFS solve different classes of problems. How do you decide between them?",
+      "back": "BFS is best when you need the shortest path in an unweighted graph or level-by-level exploration. DFS is better for exhaustive search, cycle detection, topological-style reasoning, and backtracking over combinatorial choices."
+    },
+    {
+      "id": "d38d70a9-c154-479d-9513-fe8522eba3dd",
+      "front": "10. How do you choose between quicksort, mergesort, heapsort, and a language-provided sort?",
+      "back": "Quicksort is fast in practice but has bad worst-case behavior without safeguards; mergesort is stable and predictable but needs extra memory; heapsort offers `O(n log n)` worst-case with low memory but is often slower in practice. In production, prefer the standard library sort unless you have a specific stability, memory, or adversarial-input requirement."
+    },
+    {
+      "id": "e7456f3a-2cd3-474c-82b8-c15af6bbd1e9",
+      "front": "11. What is the difference between the sliding window pattern and the two-pointer pattern?",
+      "back": "Sliding window maintains a contiguous range and updates it incrementally, usually for substring or subarray problems. Two pointers is broader: it can move from both ends or at different speeds, and the range does not need to remain contiguous."
+    },
+    {
+      "id": "18a52dc3-d6d4-47a2-8aa4-3c60206be351",
+      "front": "12. When do prefix sums or difference arrays outperform brute force?",
+      "back": "They win when you need many repeated range queries or range updates over a fixed array. Prefix sums turn sum queries into `O(1)` after preprocessing, while difference arrays make range updates cheap and defer the final reconstruction."
+    },
+    {
+      "id": "32acb6f2-966a-42db-98ac-a5d3a689a9bc",
+      "front": "13. How do you recognize a dynamic programming problem, and how do you structure the state?",
+      "back": "DP appears when a problem has overlapping subproblems and optimal substructure. A good state captures exactly the information needed to make the next decision, and the key trade-off is often memoized recursion versus bottom-up tabulation."
+    },
+    {
+      "id": "00a6206f-5376-4a20-be43-ede7fb29d888",
+      "front": "14. Why use a trie instead of a hash map for prefix-based lookup?",
+      "back": "A trie supports prefix queries and auto-complete naturally because keys share structure along paths. It usually uses more memory than a hash map, so it is best when prefix operations dominate and the alphabet is reasonably bounded."
+    },
+    {
+      "id": "b1551a74-7934-4c3d-ac3e-edfb17a9edc8",
+      "front": "15. What does union-find solve, and why is path compression important?",
+      "back": "Union-find tracks dynamic connectivity, making it ideal for connected components, Kruskal-style MST construction, and cycle detection. Path compression and union by rank keep operations near-constant amortized time instead of degenerating into long chains."
+    },
+    {
+      "id": "fd8b11a1-bfd9-4bfc-9104-df3c1e12ac54",
+      "front": "16. What is amortized analysis, and where does it show up in real data structures?",
+      "back": "Amortized analysis spreads occasional expensive operations across many cheap ones, so the average cost per operation stays low. Dynamic arrays are the classic example: appends are usually `O(1)`, even though resizing is occasionally `O(n)`."
+    },
+    {
+      "id": "ac55b0cc-256c-4b90-87dc-9bc2ce1b3f5a",
+      "front": "17. How do you avoid repeated work and infinite loops when traversing graphs?",
+      "back": "Use a visited structure, mark nodes at the right time, and define a clear termination condition. Without that, cycles can cause exponential blowups, repeated processing, or recursion that never returns."
+    },
+    {
+      "id": "149f16d2-a2e9-4454-999d-9682074bab17",
+      "front": "18. What memory and cache effects should influence your data structure choice?",
+      "back": "Contiguous memory is usually faster because CPUs prefetch predictable access patterns, which is why arrays often beat pointer-heavy structures in practice. If memory overhead matters, avoid node-based structures unless they solve a real access problem."
+    },
+    {
+      "id": "33050fc4-ab75-487b-b584-ff720fdc0e12",
+      "front": "19. What are the most common failure modes in algorithm and data structure implementations?",
+      "back": "Typical failures are off-by-one errors, missed edge cases, incorrect invariants, stack overflows from recursion, and forgetting to handle empty or duplicate inputs. In graph and tree code, the biggest risk is usually not the algorithm itself but the state bookkeeping around it."
+    },
+    {
+      "id": "8e0a984c-5dcd-456d-a6bc-3140883b425a",
+      "front": "20. When is the right answer not a more advanced data structure but a simpler one?",
+      "back": "Choose the simplest structure that meets the latency, memory, and correctness requirements, because extra complexity creates maintenance and bug risk. If the bottleneck is elsewhere or the input size is modest, a plain array, map, or sort plus scan is often the better engineering choice."
+    }
+  ],
+  "tags": [
+    "data-structures",
+    "algorithms",
+    "interview-prep",
+    "big-o",
+    "graph-algorithms"
+  ]
+}

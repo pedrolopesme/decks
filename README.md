@@ -24,6 +24,12 @@ Flashcard decks — 20 questions each.
 |------|-----------|------|
 | [Domain-Driven Design (DDD) Interview Prep](ddd/deck.md) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/ddd/deck.json) |
 
+## Algorithms
+
+| Deck | Questions | JSON |
+|------|-----------|------|
+| [Data Structures and Algorithms Interview Prep](data-structures-and-algorithms/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/data-structures-and-algorithms/deck.json) |
+
 ## Golang
 
 | Deck | Questions | JSON |
