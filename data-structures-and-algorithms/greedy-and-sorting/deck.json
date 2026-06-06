@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "d58a1acd-c174-415c-b56d-968a60a1a6ec",
+  "name": "Greedy and Sorting Interview Prep",
+  "description": "20 advanced questions on greedy choice arguments, interval scheduling, sorting strategy, and when simpler ordering logic wins.",
+  "cards": [
+    {
+      "id": "a51d8f96-9722-4754-a0f1-18d32127a583",
+      "front": "1. What makes a greedy algorithm correct?",
+      "back": "A greedy algorithm is correct when making the locally best choice at each step can be proven to lead to a globally optimal solution. The proof usually relies on an exchange argument or invariant."
+    },
+    {
+      "id": "69b321c9-0a2e-4c09-8e3b-795f4a05930c",
+      "front": "2. Why is sorting often the first step in a greedy solution?",
+      "back": "Sorting can reveal structure that makes a local-choice proof obvious, such as interval end times or deadlines. It often turns a messy choice problem into a linear scan."
+    },
+    {
+      "id": "46b6ab43-8727-4861-be51-3da2500cacf8",
+      "front": "3. What is the classic interval scheduling greedy strategy?",
+      "back": "Pick the interval that finishes earliest, then repeat with the remaining compatible intervals. That choice preserves maximum room for future intervals."
+    },
+    {
+      "id": "5e60f619-9d1d-4b8b-a9ce-449de888dce8",
+      "front": "4. Why is proof of correctness so important for greedy problems?",
+      "back": "Because a locally appealing choice is not enough; you must show it never blocks an optimal solution. Without that proof, the algorithm is just a heuristic."
+    },
+    {
+      "id": "50348be6-aaeb-41a8-8b3b-fd7b109d71fa",
+      "front": "5. What is an exchange argument?",
+      "back": "It is a proof technique that shows any optimal solution can be transformed to include the greedy choice without becoming worse. That demonstrates the greedy choice is safe."
+    },
+    {
+      "id": "e34346e1-bf0b-40e9-9c63-a566d92d8ec9",
+      "front": "6. When does a greedy approach usually fail?",
+      "back": "It fails when a local choice can block a better global configuration and there is no exchange argument to save it. In those cases, the problem usually needs DP or another global strategy."
+    },
+    {
+      "id": "e1ec6bf8-80ae-415b-a8ad-1b1c0ae3f276",
+      "front": "7. What is the difference between stable and unstable sorting?",
+      "back": "A stable sort preserves the relative order of equal elements, while an unstable sort may reorder them. Stability matters when equal keys carry extra meaning."
+    },
+    {
+      "id": "f556f9e3-d211-4b9f-865b-ea076fb69963",
+      "front": "8. Why might you prefer the language runtime's sort implementation?",
+      "back": "It is usually heavily optimized, well-tested, and tuned for typical workloads and edge cases. Unless you have a special requirement, the standard library sort is the safest default."
+    },
+    {
+      "id": "0509c5b0-2002-4934-ba10-fb29eaa07e8c",
+      "front": "9. What is the key idea behind deadline-based greedy scheduling?",
+      "back": "Sort by the most constraining deadline or highest priority rule, then keep only the choices that can still fit. This often reduces a scheduling problem to a manageable scan or priority queue process."
+    },
+    {
+      "id": "359c200f-4148-4ce3-bc09-8e94442ed583",
+      "front": "10. How do heaps show up in greedy problems?",
+      "back": "Heaps let you repeatedly extract the current best candidate while new candidates arrive during the scan. They are common in interval scheduling, top-K, and resource allocation problems."
+    },
+    {
+      "id": "9fac4572-ef25-46e8-8adb-ccfd784a2634",
+      "front": "11. Why are greedy and sorting often paired together?",
+      "back": "Sorting creates an order in which the greedy choice becomes obvious and safe. Once the data is sorted appropriately, the rest is often a single pass."
+    },
+    {
+      "id": "e42c9365-0239-4757-9c59-ceb0c584f1d0",
+      "front": "12. What is the difference between minimizing and maximizing greedy objectives?",
+      "back": "They are often mirror images, but the choice rule can differ depending on whether you need to preserve future flexibility or capture value immediately. The proof still has to match the objective."
+    },
+    {
+      "id": "975f8d5d-af76-48c5-91f0-25467911a1bd",
+      "front": "13. How do you think about tie-breaking in greedy algorithms?",
+      "back": "Tie-breaking matters when equal choices lead to different future states. A correct greedy algorithm should specify the tie rule or prove that any tie choice is safe."
+    },
+    {
+      "id": "5c3f464b-9318-42e4-89af-cbd12dc92b4f",
+      "front": "14. What is a common failure mode in sorting-based problems?",
+      "back": "People sort by the wrong key or forget that the choice must align with the proof. The sort order is not an implementation detail; it is usually part of the algorithm."
+    },
+    {
+      "id": "794f5b6e-dfef-4e44-ade7-baf5bad4e37c",
+      "front": "15. When is counting sort or radix sort worth considering?",
+      "back": "When the key range is small or structured enough that comparison sorting is unnecessarily expensive. They are useful when input properties justify a non-comparison strategy."
+    },
+    {
+      "id": "d3a4fcf5-9e09-4222-9429-8bab7532d5d4",
+      "front": "16. Why is top-K a greedy or heap-adjacent pattern so often?",
+      "back": "Because you only care about the best K candidates, not full ordering. That means you can maintain a running frontier instead of sorting everything."
+    },
+    {
+      "id": "9346cceb-7fa3-4ade-b56e-7af0fb943094",
+      "front": "17. What is the difference between sorting once and maintaining order dynamically?",
+      "back": "Sorting once is cheaper when the dataset is static, while dynamic order maintenance needs data structures like heaps or balanced trees. The right choice depends on update frequency."
+    },
+    {
+      "id": "cd8ae368-44cd-49c9-bb78-bbeb768b9d53",
+      "front": "18. How do you know whether a greedy strategy is actually just a heuristic?",
+      "back": "If you cannot prove that the local choice is safe for all cases, it is a heuristic, not a guaranteed algorithm. Interviewers care about that distinction."
+    },
+    {
+      "id": "dc5db222-9792-41cf-ab9f-776820266107",
+      "front": "19. Why do greedy algorithms often work well in interviews?",
+      "back": "Because many interview problems are designed around a clean ordering invariant or exchange argument. Greedy solutions are elegant when the problem structure supports them."
+    },
+    {
+      "id": "e3bb5bd2-4c2e-4854-9bbb-835cb7bfad01",
+      "front": "20. When is a greedy solution better than a more general one?",
+      "back": "When the problem has a provable local-choice property and the greedy version is simpler, faster, and easier to implement than DP. In interviews, that simplicity is often a major advantage."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "greedy",
+    "sorting",
+    "algorithms",
+    "interview-prep"
+  ]
+}

@@ -25,6 +25,16 @@ Flashcard decks — 20 questions each.
 | [Security, Privacy, and Abuse Interview Prep](system-design/security-privacy-and-abuse/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/security-privacy-and-abuse/deck.json) |
 | [Data Pipelines and Analytics Interview Prep](system-design/data-pipelines-and-analytics/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/data-pipelines-and-analytics/deck.json) |
 
+## Priority 2 Staff Decks
+
+| Deck | Questions | JSON |
+|------|-----------|------|
+| [DSA Core Patterns Interview Prep](data-structures-and-algorithms/core-patterns/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/data-structures-and-algorithms/core-patterns/deck.json) |
+| [Trees, Tries, and Heaps Interview Prep](data-structures-and-algorithms/trees-tries-and-heaps/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/data-structures-and-algorithms/trees-tries-and-heaps/deck.json) |
+| [Graphs and Union-Find Interview Prep](data-structures-and-algorithms/graphs-and-union-find/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/data-structures-and-algorithms/graphs-and-union-find/deck.json) |
+| [Dynamic Programming and Backtracking Interview Prep](data-structures-and-algorithms/dynamic-programming-and-backtracking/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/data-structures-and-algorithms/dynamic-programming-and-backtracking/deck.json) |
+| [Greedy and Sorting Interview Prep](data-structures-and-algorithms/greedy-and-sorting/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/data-structures-and-algorithms/greedy-and-sorting/deck.json) |
+
 ## System Design
 
 | Deck | Questions | JSON |

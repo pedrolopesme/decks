@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "b4b805c5-336f-42ac-bf4f-c182a867aefe",
+  "name": "DSA Core Patterns Interview Prep",
+  "description": "20 advanced questions on recognizing common algorithmic patterns, complexity trade-offs, and implementation pitfalls in coding interviews.",
+  "cards": [
+    {
+      "id": "17b86bbd-1edf-4ba2-8902-041c418a7d7a",
+      "front": "1. What do interviewers really want when they ask for time and space complexity?",
+      "back": "They want to know whether you can reason about how runtime and memory grow with input size, and whether you can explain bottlenecks before you code. A good answer includes best, average, and worst-case when those differ materially."
+    },
+    {
+      "id": "e50ee7ac-8179-4c99-80fd-dc1221e2633f",
+      "front": "2. When should you reach for a hash map before anything else?",
+      "back": "Use a hash map when you need fast membership checks, frequency counting, or value lookup by key. It is often the simplest way to convert an O(n^2) scan into an O(n) pass."
+    },
+    {
+      "id": "d5bd01ee-7a27-4b7f-831e-50ad9511a076",
+      "front": "3. What is the main design idea behind the two-pointer pattern?",
+      "back": "Two pointers reduce repeated work by moving through the data with controlled progress rather than restarting scans. It works well when the problem has a monotonic relationship between pointer movement and the answer."
+    },
+    {
+      "id": "e8471708-66f0-4e6b-9e5d-7c05c210c336",
+      "front": "4. Why does the sliding window pattern work so often on substring and subarray problems?",
+      "back": "It works when the optimal answer for a contiguous range can be maintained incrementally as the range expands or shrinks. The key is that you can update the state without recomputing the whole window."
+    },
+    {
+      "id": "154e82e6-4d14-4e6c-b437-8687eab28f22",
+      "front": "5. When do prefix sums beat brute force, and what is the catch?",
+      "back": "They are ideal when you need many range-sum queries over a fixed array, because preprocessing turns each query into O(1). The catch is that the technique is less helpful when the data changes frequently."
+    },
+    {
+      "id": "026f78ef-b0ec-41fa-af0d-5cdc14426088",
+      "front": "6. Why are monotonic stacks useful?",
+      "back": "They help you find the next greater or smaller element in linear time by keeping candidates in sorted order. They are a pattern for turning nested scans into one pass."
+    },
+    {
+      "id": "99534d13-39af-44e7-bbde-859184d617ef",
+      "front": "7. What problem does a heap solve better than a sorted list?",
+      "back": "A heap gives efficient access to the current min or max without maintaining full ordering. It is the right tool when you only care about extremes, not full sorted traversal."
+    },
+    {
+      "id": "94cb1810-3595-4c34-878c-23f660e2aace",
+      "front": "8. When is a stack the right abstraction?",
+      "back": "Use a stack when the most recent decision should be handled first, such as parsing, backtracking, undo operations, or nested structure validation. It matches LIFO behavior naturally."
+    },
+    {
+      "id": "315cdb3b-09da-42e5-afe8-c5cc487143a5",
+      "front": "9. What is the practical difference between recursion and an explicit stack?",
+      "back": "They often express the same traversal logic, but recursion hides the stack in the call frames while an explicit stack makes memory use and control flow more visible. Explicit stacks are safer when depth can be large."
+    },
+    {
+      "id": "4f2e0e82-64ff-4641-aa31-8c09e201def5",
+      "front": "10. What signal tells you a problem is likely a graph problem rather than a tree problem?",
+      "back": "If there may be multiple paths, cycles, or disconnected components, it is a graph problem. Trees are just constrained graphs, so the presence of cycles or arbitrary reachability usually changes the traversal strategy."
+    },
+    {
+      "id": "62a3851d-810c-4ded-b3f7-5683700a833c",
+      "front": "11. Why is a visited set so important in graph code?",
+      "back": "Without it, cycles can cause repeated work, infinite recursion, or exponential blowups. A visited set is the basic guardrail that keeps traversal finite and correct."
+    },
+    {
+      "id": "b4d55ee4-e662-4d2d-a664-beef35a4cdbf",
+      "front": "12. What is the key invariant in binary search?",
+      "back": "The search interval must always remain sorted and still contain the target if the target exists. Every boundary update has to preserve that invariant or the algorithm breaks."
+    },
+    {
+      "id": "1f1b43ff-0cee-4188-bcd5-c0a33394e43b",
+      "front": "13. How do you decide whether a problem is a dynamic programming problem?",
+      "back": "Look for overlapping subproblems and an optimal substructure that lets smaller solutions build the larger one. If you are repeatedly solving the same subproblem, DP is probably worth considering."
+    },
+    {
+      "id": "5a6616c0-f377-4171-b8b9-f3548d668d82",
+      "front": "14. What is amortized analysis, and why does it matter in interviews?",
+      "back": "Amortized analysis spreads rare expensive operations across many cheap ones to show the long-term cost per operation. It is the right lens for dynamic arrays, hash table resizing, and similar structures."
+    },
+    {
+      "id": "fb12f314-9ee1-4f4b-ab4f-f06352af6608",
+      "front": "15. Why do array-based structures often outperform pointer-heavy ones?",
+      "back": "Contiguous memory is cache-friendly and easier for the CPU to prefetch. Even when two structures have the same Big-O, the array-based one can be much faster in practice."
+    },
+    {
+      "id": "23572d66-dd7e-4866-a56e-7e7f53fcaa04",
+      "front": "16. What are the most common bugs in interview DSA solutions?",
+      "back": "Off-by-one errors, forgetting duplicates, mishandling empty inputs, and breaking invariants during pointer or boundary updates. The algorithm idea may be right while the implementation is still wrong."
+    },
+    {
+      "id": "227f4645-0fcc-4aab-8634-424bb1be0650",
+      "front": "17. How do you choose between a map, a set, and an array for membership checks?",
+      "back": "Use a set or map when lookups dominate and order does not matter; use an array when the data is small enough that a scan is simpler and still fast. The right choice is usually the simplest structure that meets the performance needs."
+    },
+    {
+      "id": "b406f2ed-fc54-4d61-97ae-ada669f29bfb",
+      "front": "18. What does it mean to reason about a problem by invariants?",
+      "back": "It means you identify what must remain true after every step and use that to guide the implementation. Invariants are how you prove that a pattern like sliding window or binary search is safe."
+    },
+    {
+      "id": "1ee90139-bd1e-4fef-a518-14f74b452266",
+      "front": "19. When should you avoid an advanced data structure altogether?",
+      "back": "When the simpler structure already satisfies the constraints and the added complexity does not buy enough performance. Interviewers usually prefer a clean, correct solution over a clever one that is harder to validate."
+    },
+    {
+      "id": "fe55ed6d-3e6e-4547-90f2-6ad00c5b6ba3",
+      "front": "20. What is the best way to validate that you picked the right pattern?",
+      "back": "Try to explain why the chosen pattern reduces the problem to a known invariant, then test it against edge cases. If the reasoning is clean and the edge cases behave, the pattern is probably right."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "data-structures",
+    "algorithms",
+    "patterns",
+    "interview-prep"
+  ]
+}

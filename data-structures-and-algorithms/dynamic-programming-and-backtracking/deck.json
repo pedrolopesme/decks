@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "a1783dab-d9fe-4fa2-8754-c63561b8ba78",
+  "name": "Dynamic Programming and Backtracking Interview Prep",
+  "description": "20 advanced questions on state design, memoization, tabulation, pruning, and search-space reduction for interview problems.",
+  "cards": [
+    {
+      "id": "f4b15ca8-a6cf-4783-8f44-03f419e8cce3",
+      "front": "1. How do you recognize a dynamic programming problem?",
+      "back": "Look for overlapping subproblems and optimal substructure, meaning the best answer can be built from smaller answers. If you keep recomputing the same states, DP is likely the right tool."
+    },
+    {
+      "id": "929f19bd-46f5-4eaa-b465-7dba7e50fd88",
+      "front": "2. What is the difference between memoization and tabulation?",
+      "back": "Memoization is top-down with cached recursion; tabulation is bottom-up iterative filling of a table. They often solve the same problem, but they differ in control flow and stack usage."
+    },
+    {
+      "id": "c9970411-d886-44e8-83d3-29e2000a8f47",
+      "front": "3. What makes a good DP state?",
+      "back": "A good state captures exactly the information needed to make the next decision and nothing more. Overly large states make the solution slow and harder to reason about."
+    },
+    {
+      "id": "69e2ea74-b0f2-4c33-b69b-31eba4655556",
+      "front": "4. Why is state design usually the hardest part of DP?",
+      "back": "Because the state determines both correctness and complexity. If you forget an important dimension, the answer is wrong; if you add too many dimensions, the solution becomes intractable."
+    },
+    {
+      "id": "67b01c5a-60c6-4bf1-9d0f-3f8fb12debe0",
+      "front": "5. What is the difference between top-down and bottom-up approaches in practice?",
+      "back": "Top-down is often easier to derive from the recursive structure of the problem, while bottom-up can be more space-efficient and avoids recursion depth issues. Both require the same logical recurrence."
+    },
+    {
+      "id": "5b92971b-c435-4fec-a503-6b178e20ed64",
+      "front": "6. When is backtracking the right approach?",
+      "back": "Use backtracking when you need to explore a search space of combinations or permutations and can prune invalid partial solutions early. It is a structured brute-force search."
+    },
+    {
+      "id": "2aecd85c-5bda-40e7-b8f7-93e211f0a8eb",
+      "front": "7. Why does pruning matter so much in backtracking?",
+      "back": "Pruning cuts off branches that cannot lead to valid answers, which reduces the search space dramatically. Without pruning, backtracking often degenerates into exponential brute force."
+    },
+    {
+      "id": "633ff0aa-6b20-40b3-89f5-7b547fc04f62",
+      "front": "8. What is the classic pitfall in recursion-based solutions?",
+      "back": "Mutating shared state without properly undoing it when the recursion returns. Backtracking only works if every choice is cleanly reversed on the way out."
+    },
+    {
+      "id": "40da66fe-5b42-4850-b4ae-924a286e03ba",
+      "front": "9. How do you decide whether to use recursion at all?",
+      "back": "Use recursion when the problem naturally decomposes into the same subproblem repeated over smaller inputs and the depth is manageable. Otherwise, an iterative formulation may be safer."
+    },
+    {
+      "id": "0cff683b-aae7-46ca-bebc-123d844ed9e9",
+      "front": "10. What is the relationship between DP and shortest-path style reasoning?",
+      "back": "Both are about finding the best value over a state space by combining smaller optimal choices. Many DP problems can be viewed as shortest-path or DAG-recurrence problems in disguise."
+    },
+    {
+      "id": "2bd4d5bd-af28-4c1d-8c15-129fd23d97b8",
+      "front": "11. Why do many DP solutions use a table initialized with sentinel values?",
+      "back": "Sentinels mark states that have not been computed or are impossible to reach. They help separate real answers from uninitialized memory or invalid transitions."
+    },
+    {
+      "id": "cdf22e23-0ced-4c5e-ab9b-134045b5ad70",
+      "front": "12. How do you think about transition equations?",
+      "back": "A transition describes how one state leads to another and how the cost or score changes. If the transition is wrong, the entire DP is wrong even if the table shape is right."
+    },
+    {
+      "id": "eb8a83d5-4a33-44d9-b237-58456af33b08",
+      "front": "13. Why are combinatorics problems often solved with backtracking or DP?",
+      "back": "Because they require enumerating or counting many structured possibilities. Backtracking explores the possibilities; DP counts or reuses them efficiently."
+    },
+    {
+      "id": "1cacd831-9c34-44e0-847e-9a3bc27d9cbe",
+      "front": "14. What is the difference between counting solutions and finding one solution?",
+      "back": "Finding one solution can often stop early, while counting solutions needs systematic coverage of all valid states. Counting usually pushes you toward memoization or tabulation."
+    },
+    {
+      "id": "80a16f05-0e1a-415d-840b-2dc71b3ceb18",
+      "front": "15. How do you reduce the memory footprint of DP?",
+      "back": "Use rolling arrays, compress dimensions, or keep only the previous layer when the recurrence allows it. Space optimization should preserve the same recurrence, not change the logic."
+    },
+    {
+      "id": "97166088-9d6f-4b3a-a09e-d8ea25edeab4",
+      "front": "16. What is the danger of using DP when a greedy solution exists?",
+      "back": "You may solve a problem correctly but with unnecessary complexity and worse performance. Good interview practice is to ask whether a stronger invariant makes a greedy approach possible first."
+    },
+    {
+      "id": "57fcb5ad-b137-41cb-91fa-9bbcacc72f2b",
+      "front": "17. How do you know a backtracking solution is missing pruning?",
+      "back": "If the runtime explodes on even moderate inputs, you are probably exploring branches that can be rejected earlier. Strong pruning usually changes the practical feasibility of the solution."
+    },
+    {
+      "id": "ea2b97bd-8ef0-4293-ab95-00aad30cddda",
+      "front": "18. What is a common sign that your DP state is incomplete?",
+      "back": "If the recurrence needs hidden information not represented in the state, the solution will seem to work on some cases and fail on edge cases. Incomplete state is a correctness bug, not just a performance issue."
+    },
+    {
+      "id": "a2ff793e-6674-4d36-b7b9-9b4599f5dcfa",
+      "front": "19. How do you explain the complexity of a backtracking solution?",
+      "back": "You describe the branching factor, the recursion depth, and any pruning that reduces the raw search space. Without pruning, the complexity is often exponential by construction."
+    },
+    {
+      "id": "80dd26e8-bec1-41b4-8046-4112e164eca0",
+      "front": "20. When should you stop and rethink the model instead of forcing DP or backtracking?",
+      "back": "When the state space is exploding or the recurrence is becoming too awkward, the underlying model may be wrong. Sometimes a graph, greedy strategy, or mathematical reformulation is the better answer."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "dynamic-programming",
+    "backtracking",
+    "algorithms",
+    "interview-prep"
+  ]
+}

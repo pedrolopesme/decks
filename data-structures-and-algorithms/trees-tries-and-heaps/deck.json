@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "e0290291-33e6-4391-af13-b64bec2ffc89",
+  "name": "Trees, Tries, and Heaps Interview Prep",
+  "description": "20 advanced questions on tree traversal, trie-based lookup, heap behavior, and the practical trade-offs of hierarchical data structures.",
+  "cards": [
+    {
+      "id": "6199d7d7-bab5-4cc2-b26b-cc6df465da6b",
+      "front": "1. What makes tree problems different from array problems?",
+      "back": "Tree problems add hierarchical relationships, recursion, and branching structure that arrays do not model naturally. The shape of the data often matters as much as the values."
+    },
+    {
+      "id": "f1aa1e4e-4e97-441f-94c7-fc7fa165ddfa",
+      "front": "2. Why is preorder useful?",
+      "back": "Preorder visits the node before its children, which is useful when the parent must be processed before the subtree. It is common in serialization, cloning, and expression parsing."
+    },
+    {
+      "id": "d662f95b-1d69-428b-8c35-ca3e889ca04c",
+      "front": "3. When do inorder traversals matter?",
+      "back": "Inorder traversal is most useful when the tree has ordering semantics, especially in a binary search tree. It produces sorted order when the BST invariant holds."
+    },
+    {
+      "id": "d34e2a80-4442-4581-8d2e-3dd11e4abdad",
+      "front": "4. What is the difference between BFS on a tree and BFS on a graph?",
+      "back": "The tree version does not need a visited set because there are no cycles, while the graph version does. BFS on trees is mostly about level order; BFS on graphs is also about reachability and shortest unweighted paths."
+    },
+    {
+      "id": "226b9076-7066-443b-850a-cf14b2045081",
+      "front": "5. Why are iterative traversals sometimes preferable to recursion?",
+      "back": "They avoid call-stack depth limits and make memory usage explicit. That matters when trees can be very deep or skewed."
+    },
+    {
+      "id": "11b296fa-1473-4036-a5b1-9eb9aa09187f",
+      "front": "6. What is the key property of a binary search tree?",
+      "back": "All nodes in the left subtree are smaller than the root, and all nodes in the right subtree are larger. That ordering property is what makes search efficient."
+    },
+    {
+      "id": "5f110c5c-32e7-45c4-9f27-1760c8fdc31c",
+      "front": "7. Why do balanced trees matter?",
+      "back": "Balancing prevents operations from degrading to linear time on skewed input. Without balance, a BST can behave like a linked list."
+    },
+    {
+      "id": "15d90bac-be69-42d7-afdd-faab9cb63c4b",
+      "front": "8. When is a heap the right abstraction?",
+      "back": "Use a heap when you repeatedly need the current minimum or maximum and do not need full ordering. It is ideal for scheduling, top-K, and streaming selection problems."
+    },
+    {
+      "id": "23b857e1-29e0-45d7-963b-b0b3aa4a565e",
+      "front": "9. What is the difference between a min-heap and a max-heap?",
+      "back": "A min-heap always exposes the smallest element at the top, while a max-heap exposes the largest. They are mirror images with the same basic operational model."
+    },
+    {
+      "id": "00381e0c-4c31-4516-8154-9b3bd0771c00",
+      "front": "10. Why do heaps not support fast search for arbitrary elements?",
+      "back": "A heap only guarantees order along the path to the root, not full sorted structure. Searching for an arbitrary value may still require scanning most of the heap."
+    },
+    {
+      "id": "026bd455-4ce1-4ddb-8c14-33fe5d911557",
+      "front": "11. What makes tries useful for prefix-heavy workloads?",
+      "back": "Tries share prefixes across keys, so they support prefix lookup, autocomplete, and dictionary-style queries naturally. They are useful when prefix operations matter more than memory efficiency."
+    },
+    {
+      "id": "97ad030b-b436-4473-a3f6-45e89a07735d",
+      "front": "12. What is the main trade-off of a trie versus a hash map?",
+      "back": "A trie gives prefix structure and ordered traversal, but it usually costs more memory than a hash map. Choose it when the prefix capability is worth the overhead."
+    },
+    {
+      "id": "678d555f-b9ae-4275-b6a6-272d1eb4e3dc",
+      "front": "13. How do you detect whether a tree is height-balanced?",
+      "back": "You typically compute subtree heights bottom-up and fail early when the difference exceeds one. The important part is avoiding repeated height recomputation."
+    },
+    {
+      "id": "4b02d0c9-27b4-41b6-b4a3-e53bf1163339",
+      "front": "14. What is a common mistake in lowest-common-ancestor problems?",
+      "back": "A frequent mistake is ignoring how ancestor relationships propagate upward from both subtrees. The solution usually needs careful recursion or parent tracking."
+    },
+    {
+      "id": "00411864-5e5e-4cb1-86f3-90da5016c7ed",
+      "front": "15. Why are tree serialization problems so common?",
+      "back": "Because they test whether you can preserve structure, not just values. A correct serialization must encode nulls or boundaries so the shape can be reconstructed unambiguously."
+    },
+    {
+      "id": "d25f3cdc-93d1-4570-bf4e-51f295db0c38",
+      "front": "16. What is the role of a parent pointer in tree algorithms?",
+      "back": "It can simplify upward traversal and ancestor queries, but it also changes the shape of the problem. Some algorithms become much easier when you can move both down and up."
+    },
+    {
+      "id": "f7a2aab2-ae56-43ad-a159-e2647f5e0abb",
+      "front": "17. Why is recursion natural for tree problems?",
+      "back": "Because each subtree is itself a smaller instance of the same problem. That self-similarity makes recursive definitions clean and easy to reason about."
+    },
+    {
+      "id": "d341bc87-4211-4a6e-9ef4-40ea2089155a",
+      "front": "18. How do you choose between BFS and DFS on a tree?",
+      "back": "Use BFS for level-order questions or shortest path in an unweighted tree, and DFS for subtree aggregation or structural checks. The right choice depends on whether you care more about breadth or depth."
+    },
+    {
+      "id": "de2a4083-cd27-43c9-8978-1fdaffbbbe73",
+      "front": "19. What are the most common edge cases in tree and heap code?",
+      "back": "Empty structures, single-node trees, skewed trees, duplicate values, and off-by-one mistakes in child indexing. These are the cases that often break otherwise correct logic."
+    },
+    {
+      "id": "140db53c-ffc7-4fd6-a4a1-829cb5d6ff6b",
+      "front": "20. When should you simplify the structure instead of using a tree, trie, or heap?",
+      "back": "If the data is small or the query pattern is simple, a map or array may be easier, safer, and fast enough. Use the advanced structure only when the access pattern truly needs it."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "data-structures",
+    "trees",
+    "tries",
+    "heaps"
+  ]
+}
