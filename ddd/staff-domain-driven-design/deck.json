@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "9adba3ff-27ca-49d4-9847-261ab03c117b",
+  "name": "Staff Domain-Driven Design Interview Prep",
+  "description": "20 advanced questions on strategic and tactical DDD for large systems, with emphasis on bounded contexts, aggregate design, integrations, and team boundaries.",
+  "cards": [
+    {
+      "id": "8f5d6e37-623e-4574-a2b4-0768f340ec52",
+      "front": "1. What is the real purpose of the ubiquitous language?",
+      "back": "It creates a shared vocabulary between engineers and domain experts so the code, conversations, and documentation all describe the same reality. That alignment reduces translation bugs and organizational drift."
+    },
+    {
+      "id": "ffedacd8-d1b3-4e92-b449-1d68ac208ea0",
+      "front": "2. How do you distinguish a subdomain from a bounded context?",
+      "back": "A subdomain is part of the business problem space, while a bounded context is the technical boundary in which a model is applied consistently. One is about the domain; the other is about implementation and ownership."
+    },
+    {
+      "id": "4f18b616-7d85-48a6-92c3-390caaf29873",
+      "front": "3. Why are aggregate boundaries so important?",
+      "back": "Aggregate boundaries define what must be kept consistent together in one transaction. If the boundary is too large, the model becomes hard to scale; if too small, invariants leak across objects."
+    },
+    {
+      "id": "bca413ce-fd98-45a3-9a87-53e70e46f241",
+      "front": "4. What is the best way to choose aggregate boundaries?",
+      "back": "Start from the business invariants that must hold atomically, then identify the minimal object set needed to enforce them. Transaction scope, concurrency, and expected contention all matter."
+    },
+    {
+      "id": "6a678985-da71-4215-8821-81ba05b23a83",
+      "front": "5. When should cross-aggregate consistency be eventual rather than immediate?",
+      "back": "Use eventual consistency when the business can tolerate short-lived divergence and the cost of a global transaction is too high. Sagas and events are usually better than forcing distributed ACID."
+    },
+    {
+      "id": "c38a342f-feb4-4f38-9a7f-259049d11708",
+      "front": "6. How do value objects help at Staff scale?",
+      "back": "They model concepts by value instead of identity, which reduces accidental mutation and makes the domain easier to reason about. They are especially useful for units, money, time ranges, and constraints."
+    },
+    {
+      "id": "b29ee853-7067-4b82-95b4-0add15e26dad",
+      "front": "7. What is the difference between an entity and a value object in practice?",
+      "back": "An entity has identity and lifecycle, while a value object is defined by its attributes alone. If changing a field changes the conceptual thing itself, it is probably an entity."
+    },
+    {
+      "id": "7eb4ce8f-f977-42ce-adb6-137f482c58fb",
+      "front": "8. When should you prefer a domain service over an entity method?",
+      "back": "Use a domain service when the behavior does not naturally belong to one entity or value object, or when it coordinates multiple domain objects. It should still contain domain logic, not just orchestration."
+    },
+    {
+      "id": "1f54fcbb-926b-43be-8e52-c5687079e95b",
+      "front": "9. Why are anti-corruption layers strategically important?",
+      "back": "They protect the model from legacy schemas, vendor APIs, and accidental coupling to foreign concepts. In large organizations, they are often the difference between clean boundaries and a polluted model."
+    },
+    {
+      "id": "9113f08c-1fcd-4779-8c4c-2e09720da5f1",
+      "front": "10. What does context mapping solve?",
+      "back": "It makes explicit how bounded contexts relate to each other, such as upstream/downstream, customer/supplier, or shared kernel relationships. That visibility helps teams manage dependencies deliberately."
+    },
+    {
+      "id": "ea110b67-14a8-46fd-b329-a5fcf716fd13",
+      "front": "11. When is a shared kernel a bad idea?",
+      "back": "It is risky when teams move at different speeds or do not communicate closely enough to maintain the shared model safely. The coupling cost can overwhelm the benefits."
+    },
+    {
+      "id": "cb84ff7b-7a6c-4382-a0a0-e93b21c16171",
+      "front": "12. How do domain events differ from integration events?",
+      "back": "Domain events describe something meaningful that happened inside the domain, while integration events are what other systems consume. The distinction matters because the audiences and payloads are not always the same."
+    },
+    {
+      "id": "9e1de9c2-45e8-411a-9fa6-7050e20e8796",
+      "front": "13. Why is event sourcing attractive, and why is it hard?",
+      "back": "It provides a complete history, replayability, and a natural audit trail. It is hard because consumers, projections, and migration logic all need to tolerate replay and schema evolution."
+    },
+    {
+      "id": "5eaee42d-e453-4229-aa65-a0bc5af1a26c",
+      "front": "14. What are signs of an anemic domain model?",
+      "back": "If almost all business logic lives in services and entities are just data holders, the model is probably anemic. That usually means invariants are scattered and harder to maintain."
+    },
+    {
+      "id": "4f677d03-a277-484e-a449-6d5647b32bd0",
+      "front": "15. How do you decide between a modular monolith and microservices?",
+      "back": "Choose a modular monolith when boundaries are still changing and team size does not justify distributed complexity. Move to microservices when ownership, scale, or deployment independence truly demand it."
+    },
+    {
+      "id": "8564585c-66e0-4360-9224-28cb4e347e31",
+      "front": "16. How do you migrate a legacy system into bounded contexts?",
+      "back": "Start by identifying stable business seams, then carve out ownership gradually with an anti-corruption layer or strangler pattern. The goal is to improve boundaries without freezing product delivery."
+    },
+    {
+      "id": "9186bf90-0b16-4423-8c11-fc027a22ee85",
+      "front": "17. Why does DDD care about team boundaries?",
+      "back": "Because models usually stay healthy only when the team that owns them can evolve them coherently. Bounded contexts are as much organizational boundaries as technical ones."
+    },
+    {
+      "id": "2db38171-d6d4-4344-bc0b-f7f0541e1f6c",
+      "front": "18. How do you keep ubiquitous language from drifting?",
+      "back": "Keep domain experts close, validate terms in design reviews, and reflect changes in code and documentation quickly. Language drift is often an early sign that the model is going stale."
+    },
+    {
+      "id": "43c148e5-4bb4-42a4-ab07-a7d4a527c9f2",
+      "front": "19. What is a published language used for?",
+      "back": "It is a stable, well-defined contract for communication between contexts so consumers do not depend on internal details. It reduces translation overhead and accidental coupling."
+    },
+    {
+      "id": "acb799a0-f049-4137-a868-41fb88fb3a18",
+      "front": "20. When is DDD the wrong tool?",
+      "back": "When the domain is simple, the product is still exploratory, or the team does not need the modeling overhead. DDD should clarify complexity, not create ceremony for its own sake."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "ddd",
+    "domain-modeling",
+    "software-architecture",
+    "staff-engineer"
+  ]
+}

@@ -35,6 +35,14 @@ Flashcard decks — 20 questions each.
 | [Dynamic Programming and Backtracking Interview Prep](data-structures-and-algorithms/dynamic-programming-and-backtracking/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/data-structures-and-algorithms/dynamic-programming-and-backtracking/deck.json) |
 | [Greedy and Sorting Interview Prep](data-structures-and-algorithms/greedy-and-sorting/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/data-structures-and-algorithms/greedy-and-sorting/deck.json) |
 
+## Priority 3 Staff Decks
+
+| Deck | Questions | JSON |
+|------|-----------|------|
+| [Staff OOP and Design Patterns Interview Prep](design-pattern/staff-oop-and-design-patterns/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/design-pattern/staff-oop-and-design-patterns/deck.json) |
+| [Staff Domain-Driven Design Interview Prep](ddd/staff-domain-driven-design/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/ddd/staff-domain-driven-design/deck.json) |
+| [Staff Go Concurrency and Runtime Interview Prep](golang/staff-concurrency-runtime/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/golang/staff-concurrency-runtime/deck.json) |
+
 ## System Design
 
 | Deck | Questions | JSON |

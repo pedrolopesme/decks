@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "783e1798-db15-4572-ac5f-5166ecc2d2c8",
+  "name": "Staff Go Concurrency and Runtime Interview Prep",
+  "description": "20 advanced questions on Go concurrency, cancellation, runtime behavior, scheduling, synchronization, and production debugging of concurrent systems.",
+  "cards": [
+    {
+      "id": "e6b7f737-1c2b-4da6-9c30-58162d3a9456",
+      "front": "1. What is the difference between concurrency and parallelism in production systems?",
+      "back": "Concurrency is about structuring work so many tasks can progress independently, while parallelism is about executing tasks at the same time. In interviews, the key is showing that you know they solve different problems."
+    },
+    {
+      "id": "5a328d3c-0473-44f2-b34a-910eae99ea7a",
+      "front": "2. How does the Go scheduler affect service behavior under load?",
+      "back": "The scheduler multiplexes goroutines onto OS threads, so contention, blocking calls, and CPU saturation all influence throughput and latency. Understanding the scheduler helps explain why a service may stall even when goroutine count looks fine."
+    },
+    {
+      "id": "d2103486-f999-4efd-b868-66536d0f7fee",
+      "front": "3. Why are goroutines cheap, but not free?",
+      "back": "They have low overhead compared with threads, but each goroutine still consumes memory, scheduling attention, and sometimes downstream resources. A leak or explosion in goroutine count can still take down a service."
+    },
+    {
+      "id": "ef696086-c600-44b4-a4eb-7edffc5d4311",
+      "front": "4. What is the practical role of context cancellation?",
+      "back": "Context cancellation propagates deadlines and shutdown signals across API boundaries so work can stop early and cleanly. It is the standard way to make concurrent code cooperative."
+    },
+    {
+      "id": "44d879bd-1130-4943-ad81-18e0547beb42",
+      "front": "5. When should you use channels versus mutexes?",
+      "back": "Use channels when you are coordinating ownership or sequencing work, and use mutexes when protecting shared mutable state is simpler and faster. Staff-level Go answers should not treat either one as universally superior."
+    },
+    {
+      "id": "2c25b8c4-6f60-4c5d-b7b5-769a3a186a0a",
+      "front": "6. What problem does sync.Once solve?",
+      "back": "It guarantees one-time initialization without races, which is ideal for lazy setup and singleton-like initialization paths. It is one of the safest primitives for concurrent initialization."
+    },
+    {
+      "id": "5c41d61c-0486-4ac3-9d1e-2ec3c350dbe1",
+      "front": "7. What is the difference between sync.Map and a map protected by a mutex?",
+      "back": "sync.Map is optimized for read-heavy or write-once-read-many workloads, while a plain map with a mutex is more general and often clearer. The specialized type is not automatically better."
+    },
+    {
+      "id": "ca6ab3f7-5579-4530-953d-77aacbfe33b2",
+      "front": "8. When do atomic operations make sense?",
+      "back": "Use atomics for simple counters, flags, or state transitions where the cost of a mutex is unnecessary and the operation is naturally small. They are not a general replacement for synchronization."
+    },
+    {
+      "id": "8fe0c566-c46f-4ccd-9e26-3bae73bea631",
+      "front": "9. What is a goroutine leak, and why is it dangerous?",
+      "back": "A goroutine leak happens when a goroutine cannot finish because it waits forever or loses its cancellation path. Leaks accumulate quietly and eventually consume memory and scheduling capacity."
+    },
+    {
+      "id": "599380be-6cf5-4c84-aa58-637f24494c14",
+      "front": "10. How do buffered channels change the concurrency model?",
+      "back": "They let senders proceed without an immediate receiver up to the buffer limit, which decouples stages and can smooth short bursts. They also make backpressure less visible if used carelessly."
+    },
+    {
+      "id": "7459552a-101c-4537-9430-cc98efb38746",
+      "front": "11. What is the fan-out/fan-in pattern used for?",
+      "back": "Fan-out spreads work across multiple goroutines, and fan-in combines their results back into one stream. It is a common way to build parallel pipelines."
+    },
+    {
+      "id": "14c2b734-483a-48ed-8ce5-82c77fc1b73d",
+      "front": "12. How do you prevent pipeline stages from blocking forever?",
+      "back": "Every stage should respect cancellation, close its outputs correctly, and avoid waiting on a downstream consumer that may never read again. Deadlines and done channels are essential."
+    },
+    {
+      "id": "92c358c4-4a71-49bc-9c35-f13c8d008732",
+      "front": "13. Why is the Go race detector valuable?",
+      "back": "It finds many concurrency bugs that are invisible in normal testing, especially around unsynchronized shared state. It is a practical safety net, not just a development convenience."
+    },
+    {
+      "id": "490e9ac7-aee4-4101-a577-804f376f32e1",
+      "front": "14. What is the key idea behind a worker pool?",
+      "back": "A worker pool bounds concurrency so the system can process tasks without spawning unbounded goroutines or overrunning downstream dependencies. It is a throughput and safety control."
+    },
+    {
+      "id": "70a6c463-9ea3-4b8f-9183-0e0c736df2b7",
+      "front": "15. How do you choose the size of a worker pool?",
+      "back": "Size it based on the bottleneck: CPU, I/O, external API limits, or downstream quotas. A good answer explains that optimal size depends on the workload, not a fixed rule."
+    },
+    {
+      "id": "6619c77e-1c27-4365-a07d-d74defff1d3b",
+      "front": "16. What is the role of sync.WaitGroup?",
+      "back": "It lets the caller wait for a known set of goroutines to finish before continuing. It is useful for coordination, but it does not cancel or manage work on its own."
+    },
+    {
+      "id": "c37733ee-acb5-429b-a496-36d6469600b2",
+      "front": "17. Why is select so important in concurrent Go code?",
+      "back": "It lets a goroutine respond to whichever channel or timeout is ready first, which is crucial for cancellation, fan-in, and non-blocking coordination. Many robust patterns in Go are built on select."
+    },
+    {
+      "id": "6eff3333-fce7-4051-8017-c07af8f7a129",
+      "front": "18. How do you safely shut down a concurrent service?",
+      "back": "Stop accepting new work, cancel in-flight operations, wait for graceful completion with a bounded timeout, and then release resources. Shutdown should be deterministic, not best-effort."
+    },
+    {
+      "id": "9e0ff15b-0006-4722-86ba-41f38f153296",
+      "front": "19. What runtime behavior can cause starvation or unfairness?",
+      "back": "Long-running CPU-bound goroutines, blocking calls, or poor synchronization can prevent other goroutines from making progress. In practice, fairness is something you design for, not assume."
+    },
+    {
+      "id": "c4f1af75-3a2c-4f54-a4db-6025d12d6b1b",
+      "front": "20. How do you debug a production concurrency issue in Go?",
+      "back": "Start with stack traces, goroutine dumps, contention metrics, race reproduction, and cancellation paths. The best fixes usually come from understanding where work is blocked, not just where it crashes."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "golang",
+    "concurrency",
+    "runtime",
+    "backend"
+  ]
+}

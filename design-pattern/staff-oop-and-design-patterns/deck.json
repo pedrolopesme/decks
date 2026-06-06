@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "1ac48128-e139-4523-ae99-15bb0d27efe1",
+  "name": "Staff OOP and Design Patterns Interview Prep",
+  "description": "20 advanced questions on applying object-oriented design principles and patterns in large codebases, with emphasis on maintainability, testability, and boundary management.",
+  "cards": [
+    {
+      "id": "fb95f85a-9236-49e2-b433-1aa226bcc92b",
+      "front": "1. What is the difference between a design pattern and a design principle?",
+      "back": "A principle is a rule or constraint for good design, while a pattern is a reusable solution to a recurring problem. Staff-level engineers should use principles to judge whether a pattern is warranted at all."
+    },
+    {
+      "id": "0df8eb73-da9b-4699-ae0e-4af06311767a",
+      "front": "2. When is composition better than inheritance in a real codebase?",
+      "back": "Composition is usually better when behavior changes independently, when you want to avoid deep hierarchies, or when runtime flexibility matters. Inheritance is best reserved for true is-a relationships with stable contracts."
+    },
+    {
+      "id": "3c9e86f5-aef4-4048-be66-3c0ca1a254c3",
+      "front": "3. Why is the Singleton pattern often considered a smell?",
+      "back": "It hides dependencies, complicates testing, and can create hidden global state that is hard to reason about. In Staff interviews, it is often better to explain the alternative, not just the pattern."
+    },
+    {
+      "id": "9c24e0c5-598c-490a-b9be-9246938c1352",
+      "front": "4. What is the practical difference between Strategy and State?",
+      "back": "Strategy is chosen externally to swap algorithms, while State is chosen by the object itself as its internal condition changes. The distinction matters when you decide whether behavior is a policy or a lifecycle."
+    },
+    {
+      "id": "3d8fad80-3428-4ae7-940f-9cce4de577f1",
+      "front": "5. How does the Factory pattern help with dependency management?",
+      "back": "It centralizes construction and lets callers depend on abstractions instead of concrete classes. That makes it easier to test, configure, and evolve implementations without changing call sites."
+    },
+    {
+      "id": "7a1acea0-9737-482b-999b-bc7ed27a8c06",
+      "front": "6. When should you use Builder instead of a long constructor or struct literal?",
+      "back": "Use Builder when object creation has many optional parts, when validation is staged, or when you want fluent construction with invariants. It reduces confusion around parameter order and partial initialization."
+    },
+    {
+      "id": "e4de472c-f1ff-49ea-ab8f-770f11938fa2",
+      "front": "7. How does Decorator differ from middleware or interceptors?",
+      "back": "Decorator wraps a single object to add behavior, while middleware/interceptors wrap a call path or pipeline of requests. The idea is similar, but the level of abstraction differs."
+    },
+    {
+      "id": "ef10038d-aed5-4023-9267-382632ca823a",
+      "front": "8. What is the role of Facade in a large subsystem?",
+      "back": "Facade provides a small, coherent entry point into a complex subsystem so callers do not need to understand all internal parts. It is especially useful when the subsystem evolves faster than its consumers."
+    },
+    {
+      "id": "03c85f0b-de8e-46bf-ba61-70f77f755a2c",
+      "front": "9. How should you think about Adapter versus Anti-Corruption Layer?",
+      "back": "An Adapter usually makes two interfaces work together, while an ACL protects your domain model from foreign concepts and unwanted coupling. Both translate, but ACL is a strategic boundary, not just a mechanical wrapper."
+    },
+    {
+      "id": "1c933c1d-95b7-4958-959a-99a376b5beac",
+      "front": "10. Why is Observer useful, and why can it become dangerous?",
+      "back": "Observer decouples publishers and subscribers, which is useful for change propagation and reactive flows. It becomes dangerous when event chains become implicit, hard to trace, or too broad."
+    },
+    {
+      "id": "14964561-ad14-4a03-b485-d9a552fbc3cd",
+      "front": "11. When is Command the right abstraction?",
+      "back": "Use Command when you need to encapsulate an action, queue it, retry it, or support undo/redo. It is a strong fit for jobs, workflows, and user action history."
+    },
+    {
+      "id": "6cbeb6cb-4c14-44eb-8c6a-040580734ff9",
+      "front": "12. What makes Template Method attractive and risky?",
+      "back": "It gives a shared algorithm skeleton with customizable steps, which can reduce duplication. The risk is that subclass extension points become rigid and hard to evolve safely."
+    },
+    {
+      "id": "67822575-0175-444e-9fba-fe7955b35a57",
+      "front": "13. When is Composite a better fit than flat collections?",
+      "back": "Composite is appropriate when clients should treat leaf and container objects uniformly, such as trees of permissions or menus. It is a good fit when recursive structure is part of the domain."
+    },
+    {
+      "id": "1dbc0d3e-0151-4b21-9e22-6db67f8c7f80",
+      "front": "14. What is the practical use of Proxy in modern systems?",
+      "back": "Proxy is useful for lazy loading, access control, remote access, or caching wrappers. In Staff design discussions, it often appears as an infrastructure concern rather than a pure pattern exercise."
+    },
+    {
+      "id": "a5b90748-3a45-4066-8cc3-32438a95193f",
+      "front": "15. How does Chain of Responsibility help with extensibility?",
+      "back": "It lets you compose processing steps without hard-wiring a single monolithic handler. Validation, authorization, and enrichment pipelines are common examples."
+    },
+    {
+      "id": "985f38cc-f506-407d-b86c-ce74d69f4152",
+      "front": "16. Why is Flyweight valuable in some domains but irrelevant in others?",
+      "back": "Flyweight helps when many objects share large amounts of immutable state and memory pressure is real. If object counts are small or memory is not the constraint, the complexity is usually not worth it."
+    },
+    {
+      "id": "349c9018-bfa8-46b3-8d50-380f10fe9fce",
+      "front": "17. What is the Bridge pattern trying to solve?",
+      "back": "Bridge separates abstraction from implementation so each can evolve independently. It is useful when two dimensions of variation would otherwise create a class explosion."
+    },
+    {
+      "id": "66644544-e5f7-4565-9631-26323359fc9c",
+      "front": "18. When is Prototype a good choice?",
+      "back": "Prototype is useful when cloning an existing object is cheaper or simpler than building one from scratch. It works well for templates, configs, and expensive-to-construct objects."
+    },
+    {
+      "id": "19de75db-6773-4343-a43c-c425da51633a",
+      "front": "19. What is the main drawback of Visitor?",
+      "back": "Visitor makes it easier to add new operations, but harder to evolve the object structure itself. It can become awkward when the model changes frequently."
+    },
+    {
+      "id": "477975b2-8763-44e7-88fd-5a8aac6ef705",
+      "front": "20. How do you decide whether a pattern belongs in the code at all?",
+      "back": "Only introduce a pattern when there is a proven recurring problem, a clear maintenance payoff, and enough complexity to justify the abstraction. The best design often starts simpler than the pattern catalog suggests."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "oop",
+    "design-patterns",
+    "architecture",
+    "staff-engineer"
+  ]
+}
