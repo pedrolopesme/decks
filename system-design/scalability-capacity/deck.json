@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "d71d2379-75bb-4040-a3da-8699682e72c5",
+  "name": "Scalability and Capacity Interview Prep",
+  "description": "20 advanced questions on scaling strategies, bottlenecks, traffic shape, load balancing, sharding, and cost-aware capacity planning.",
+  "cards": [
+    {
+      "id": "35c5c419-a8fb-4f26-8b1d-887eed1d77fe",
+      "front": "1. What is the fundamental difference between scaling up and scaling out?",
+      "back": "Scaling up adds more resources to one machine, while scaling out adds more machines to distribute load. Scaling out usually gives more headroom and resilience, but it also increases coordination complexity."
+    },
+    {
+      "id": "5a0833d6-2e83-48f1-bd40-5c9e9d2141cc",
+      "front": "2. How do you identify the first bottleneck in a system?",
+      "back": "Look for the component that is closest to saturation under normal traffic: database, cache, queue, network, or compute. The first bottleneck often dominates the architecture more than any elegant secondary optimization."
+    },
+    {
+      "id": "ecaa6eca-2daf-4a72-ad5d-65faaf48e56e",
+      "front": "3. Why is consistent hashing so important for horizontal scaling?",
+      "back": "It minimizes key movement when nodes are added or removed, which reduces cache misses and data reshuffling. That property is what makes scaling events less disruptive."
+    },
+    {
+      "id": "08a276d8-624b-4f43-8ad7-2433fdb5d033",
+      "front": "4. What makes a good sharding key?",
+      "back": "A good sharding key spreads load evenly, avoids hot spots, and aligns with the most common access patterns. A bad key can make a theoretically scalable system behave like a single overloaded node."
+    },
+    {
+      "id": "5e5c61a9-19dc-47ed-8cf5-ebcd0daa961e",
+      "front": "5. How do you reason about write amplification when scaling storage?",
+      "back": "Every extra replica, index, or derived structure multiplies write cost. Staff-level designs account for the hidden cost of keeping data in sync, not just the raw request count."
+    },
+    {
+      "id": "a757a877-ebb6-47b3-a1ca-966708590249",
+      "front": "6. When is a load balancer itself a bottleneck?",
+      "back": "It becomes a bottleneck when it is treated as a single point of failure or a single throughput gate. A scalable design plans for load balancer redundancy, autoscaling, or tiered routing."
+    },
+    {
+      "id": "af7288f9-31da-4752-9692-f41f7268c73b",
+      "front": "7. How do read replicas change the scaling equation?",
+      "back": "They move read load away from the primary database, but they do not solve write bottlenecks or consistency lag. The design still needs a clear story for stale reads and replica failure."
+    },
+    {
+      "id": "c137f1c2-efbf-4e3c-89bb-e07b5777a22c",
+      "front": "8. What is the trade-off between partitioning by user and partitioning by entity?",
+      "back": "User-based partitioning often improves locality for product experiences, while entity-based partitioning can better distribute load for shared objects. The right choice depends on access patterns and the cost of cross-partition queries."
+    },
+    {
+      "id": "b24d875d-bb12-44b3-9180-cc0ed046dda5",
+      "front": "9. How should you think about cache as part of scalability?",
+      "back": "A cache should absorb repetitive read load and protect expensive downstream systems, but it also introduces staleness and invalidation complexity. It is an amplifier, not a substitute for a solid backend."
+    },
+    {
+      "id": "fbea1785-d0aa-47d5-ad26-a10f8c688e93",
+      "front": "10. Why does traffic shape matter as much as peak traffic?",
+      "back": "Two systems with the same average QPS can behave very differently if one has bursty spikes, skewed keys, or synchronized retries. Capacity planning must include shape, not just the mean."
+    },
+    {
+      "id": "98c4d27d-d046-4d9b-a3c9-528537fa4854",
+      "front": "11. How do hot keys break distributed scaling?",
+      "back": "They concentrate disproportionate load on a small part of the system, defeating the distribution strategy. The remedy may involve caching, request coalescing, key fanout, or redesigning the access pattern."
+    },
+    {
+      "id": "0059b683-1271-4fc9-a333-afa83ccfa62a",
+      "front": "12. What is the role of backpressure in scalable systems?",
+      "back": "Backpressure prevents a fast producer from overwhelming slower consumers and causing cascading failures. A good design explicitly chooses where to queue, shed load, or slow intake."
+    },
+    {
+      "id": "1ef06edc-899f-4bf5-8d94-c11934354c56",
+      "front": "13. How do autoscaling signals differ from capacity planning estimates?",
+      "back": "Autoscaling reacts to observed load, while capacity planning predicts how the architecture should behave under expected growth and spikes. You need both because reactive scaling cannot fix structural bottlenecks."
+    },
+    {
+      "id": "81d6cb47-e34a-4255-8ecb-9bba58119266",
+      "front": "14. Why does multi-region scaling increase complexity so much?",
+      "back": "It introduces replication lag, failover coordination, data residency constraints, and much more expensive correctness guarantees. Multi-region is usually a business requirement first and an engineering cost second."
+    },
+    {
+      "id": "712b6b68-597a-4287-9143-dcae765536d7",
+      "front": "15. How should you plan for burst traffic?",
+      "back": "Use caching, queues, autoscaling, admission control, and graceful degradation so the system can absorb peaks without collapsing. The important part is deciding what gets delayed versus what gets dropped."
+    },
+    {
+      "id": "cddf32ae-2058-47a2-a658-efa19371ffef",
+      "front": "16. What is the trade-off between strong consistency and scale?",
+      "back": "Stronger consistency usually costs latency and availability because more coordination is required. Staff-level designs decide where correctness must be strict and where eventual consistency is good enough."
+    },
+    {
+      "id": "429f4b5e-aade-4f44-8d30-848ab5e3a367",
+      "front": "17. Why do queues help with scalability?",
+      "back": "Queues decouple producers from consumers, absorb bursts, and let you scale processing independently from request intake. They also make backpressure and failure handling more explicit."
+    },
+    {
+      "id": "9b480fa2-6b30-47e7-b818-42ded6d4e183",
+      "front": "18. What is the cost of over-sharding?",
+      "back": "Too many shards increase routing overhead, operational complexity, and cross-shard query cost. The system can become harder to run even if raw parallelism improves."
+    },
+    {
+      "id": "f9a11841-f3b6-4dd1-ab16-e3383fce42b6",
+      "front": "19. How do you scale a stateful service safely?",
+      "back": "Externalize state into a store that can be partitioned or replicated, then make the service instances disposable. Sticky sessions are a stopgap, not the core scaling strategy."
+    },
+    {
+      "id": "ffe72df1-0aca-440b-8003-b15bdfd5068b",
+      "front": "20. When is the right answer to constrain growth instead of scaling endlessly?",
+      "back": "When the cost of full scale is too high relative to the product value, constrain the workload with quotas, rate limits, or tighter eligibility rules. Staff engineers should optimize system shape, not just chase infinite capacity."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "system-design",
+    "scalability",
+    "capacity-planning",
+    "distributed-systems"
+  ]
+}

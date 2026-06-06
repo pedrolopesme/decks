@@ -2,6 +2,29 @@
 
 Flashcard decks — 20 questions each.
 
+## Staff Interview Roadmap
+
+| Doc | Purpose |
+|-----|---------|
+| [Staff Engineer Interview Topic Map](staff-engineer-interview-topics.md) | Prioritized deck families for Uber / Meta / Google-style Staff interviews |
+
+## Priority 1 Staff Decks
+
+| Deck | Questions | JSON |
+|------|-----------|------|
+| [System Design Fundamentals Interview Prep](system-design/fundamentals/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/fundamentals/deck.json) |
+| [Scalability and Capacity Interview Prep](system-design/scalability-capacity/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/scalability-capacity/deck.json) |
+| [Distributed Systems Fundamentals Interview Prep](system-design/distributed-systems-fundamentals/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/distributed-systems-fundamentals/deck.json) |
+| [Data Stores and Modeling Interview Prep](system-design/data-stores-and-modeling/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/data-stores-and-modeling/deck.json) |
+| [Caching and State Management Interview Prep](system-design/caching-state-management/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/caching-state-management/deck.json) |
+| [Event-Driven Architecture Interview Prep](system-design/event-driven-architecture/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/event-driven-architecture/deck.json) |
+| [Reliability and Resilience Interview Prep](system-design/reliability-and-resilience/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/reliability-and-resilience/deck.json) |
+| [APIs and Service Boundaries Interview Prep](system-design/apis-and-service-boundaries/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/apis-and-service-boundaries/deck.json) |
+| [Search, Feed, and Ranking Interview Prep](system-design/search-feed-and-ranking/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/search-feed-and-ranking/deck.json) |
+| [Networking, Latency, and Edge Interview Prep](system-design/networking-latency-and-edge/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/networking-latency-and-edge/deck.json) |
+| [Security, Privacy, and Abuse Interview Prep](system-design/security-privacy-and-abuse/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/security-privacy-and-abuse/deck.json) |
+| [Data Pipelines and Analytics Interview Prep](system-design/data-pipelines-and-analytics/deck.json) | 20 | [deck.json](https://raw.githubusercontent.com/pedrolopesme/decks/main/system-design/data-pipelines-and-analytics/deck.json) |
+
 ## System Design
 
 | Deck | Questions | JSON |

@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "b5c6d7e8-f9a0-4b1c-2d3e-4f5a6b7c8d9e",
+  "name": "Networking, Latency, and Edge Interview Prep",
+  "description": "20 advanced questions on DNS, TCP/HTTP basics, tail latency, edge delivery, batching, compression, and network-aware design.",
+  "cards": [
+    {
+      "id": "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f",
+      "front": "1. Why does networking dominate many system design problems?",
+      "back": "Because even small amounts of network delay, retransmission, or packet loss can dominate the user-visible experience. The network is often the slowest and least predictable component."
+    },
+    {
+      "id": "d5e6f7a8-b9c0-4d1e-2f3a-4b5c6d7e8f9a",
+      "front": "2. What is tail latency?",
+      "back": "Tail latency is the slowest part of the latency distribution, such as p95 or p99, where a small fraction of requests take much longer. Staff-level systems care about tail latency because users feel the worst-case response."
+    },
+    {
+      "id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9c",
+      "front": "3. Why do retries make latency problems worse if unmanaged?",
+      "back": "Retries add more requests to an already stressed system, which can increase queueing and make tail latency even worse. They need backoff and budgets so they do not create self-inflicted load."
+    },
+    {
+      "id": "f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b9d",
+      "front": "4. What does a CDN actually improve?",
+      "back": "A CDN reduces distance, offloads origin traffic, and improves delivery of static or cacheable content. It is especially valuable when user geography or bursty content delivery matters."
+    },
+    {
+      "id": "a6b7c8d9-e0f1-4a2b-3c4d-5e6f7a8b9c0e",
+      "front": "5. Why does DNS matter for latency?",
+      "back": "DNS is often the first hop in a request chain, so slow or stale resolution affects everything downstream. Good design accounts for TTLs, failover, and caching behavior."
+    },
+    {
+      "id": "b6c7d8e9-f0a1-4b2c-3d4e-5f6a7b8c9d0f",
+      "front": "6. What is the impact of TCP versus HTTP-level issues?",
+      "back": "TCP handles transport concerns like retransmission and congestion, while HTTP handles request semantics and application behavior. A good design recognizes which layer is responsible for the observed symptom."
+    },
+    {
+      "id": "c6d7e8f9-a0b1-4c2d-3e4f-5a6b7c8d9e0a",
+      "front": "7. Why do batch requests help?",
+      "back": "Batching reduces per-request overhead, amortizes network costs, and can improve throughput significantly. The trade-off is added latency and more complex partial-failure handling."
+    },
+    {
+      "id": "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0b",
+      "front": "8. When does compression help and when does it hurt?",
+      "back": "Compression helps when network transfer cost dominates and payloads compress well. It hurts when CPU cost exceeds bandwidth savings or when payloads are already small."
+    },
+    {
+      "id": "e6f7a8b9-c0d1-4e2f-3a4b-5c6d7e8f9a0c",
+      "front": "9. What is the role of keep-alives and connection reuse?",
+      "back": "They reduce handshake cost and improve latency by avoiding repeated connection setup. Connection reuse is a simple but high-impact optimization for high-QPS systems."
+    },
+    {
+      "id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0d",
+      "front": "10. What is jitter in backoff and why is it important?",
+      "back": "Jitter randomizes retry timing so clients do not synchronize and overload a failing service together. It is one of the simplest ways to reduce coordinated traffic spikes."
+    },
+    {
+      "id": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1e",
+      "front": "11. Why do edge compute and edge caching matter?",
+      "back": "They move logic and data closer to users, reducing latency and origin load. They are useful when geography or large-scale fanout makes central routing expensive."
+    },
+    {
+      "id": "b7c8d9e0-f1a2-4b3c-4d5e-6f7a8b9c0d1e",
+      "front": "12. What is the difference between bandwidth and latency?",
+      "back": "Bandwidth is how much data can move per unit time, while latency is how long it takes for one request to travel. A system can have high bandwidth and still feel slow if latency is high."
+    },
+    {
+      "id": "c7d8e9f0-a1b2-4c3d-4e5f-6a7b8c9d0e1f",
+      "front": "13. How do you think about packet loss?",
+      "back": "Packet loss triggers retransmission and can massively increase tail latency. Designs that look fine in a lab may behave very differently when loss appears on real networks."
+    },
+    {
+      "id": "d7e8f9a0-b1c2-4d3e-4f5a-6b7c8d9e0f1a",
+      "front": "14. What is the practical benefit of regional routing?",
+      "back": "Routing users to nearby regions lowers round-trip time and can improve fault isolation. It also creates new complexity around data placement and failover."
+    },
+    {
+      "id": "e7f8a9b0-c1d2-4e3f-4a5b-6c7d8e9f0a1b",
+      "front": "15. Why do tail latencies stack across dependencies?",
+      "back": "If a request passes through several services, the chance that one hop is slow increases sharply. That is why end-to-end latency often looks much worse than any single hop."
+    },
+    {
+      "id": "f7a8b9c0-d1e2-4f3a-4b5c-6d7e8f9a0b1d",
+      "front": "16. How should you design for mobile networks?",
+      "back": "Assume high latency, intermittent connectivity, duplicate sends, and unreliable delivery. Mobile-aware APIs usually need retries, idempotency, and smaller payloads."
+    },
+    {
+      "id": "a8b9c0d1-e2f3-4a4b-4c5d-6e7f8a9b0c1f",
+      "front": "17. What is the role of connection pooling?",
+      "back": "Connection pooling reduces setup overhead and helps bound resource usage. It is especially valuable when the client makes many short-lived requests."
+    },
+    {
+      "id": "b8c9d0e1-f2a3-4b5c-4d6e-7f8a9b0c1d2e",
+      "front": "18. Why does locality matter for performance?",
+      "back": "Locality reduces the distance data has to travel and often improves cache behavior and user experience. It is one of the simplest ways to win latency without deep algorithm changes."
+    },
+    {
+      "id": "c8d9e0f1-a2b3-4c5d-4e6f-7a8b9c0d1e2f",
+      "front": "19. How do you interpret p99 performance?",
+      "back": "p99 shows the experience of the slowest 1% of requests, which often captures hidden reliability issues. It is usually more actionable than average latency in real systems."
+    },
+    {
+      "id": "d8e9f0a1-b2c3-4d5e-4f6a-7b8c9d0e1f2a",
+      "front": "20. When is edge optimization not worth it?",
+      "back": "When the traffic volume is low, the payloads are small, or the user experience does not depend on shaving off milliseconds. Edge systems should pay for themselves in user value or infrastructure savings."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "networking",
+    "latency",
+    "edge",
+    "performance"
+  ]
+}

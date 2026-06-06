@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0.0",
+  "id": "1f4a97e0-e2ff-4267-8f0b-58ca12b864d2",
+  "name": "System Design Fundamentals Interview Prep",
+  "description": "20 advanced questions on turning ambiguous product requirements into scalable architectures, with emphasis on constraints, APIs, data flow, trade-offs, and operational readiness.",
+  "cards": [
+    {
+      "id": "c9d8a117-ae08-4f63-a7d2-0f3a194ff64c",
+      "front": "1. What do you clarify before proposing an architecture?",
+      "back": "First clarify the user problem, traffic shape, latency and availability targets, data consistency needs, write amplification, and any hard constraints like compliance or budget. A Staff-level answer shows you can narrow the problem before designing."
+    },
+    {
+      "id": "f2d1a9dd-8ad4-4a84-bf60-d9096b9e1bb1",
+      "front": "2. How do you turn a vague product ask into system requirements?",
+      "back": "Translate business goals into functional flows and non-functional constraints, then make each one explicit: scale, SLA, durability, privacy, rollout, and operability. The output should be a design contract, not a brainstorming note."
+    },
+    {
+      "id": "85c0e5d3-7d21-4d0f-9e5b-87212d9f6aa5",
+      "front": "3. What is the right sequence for a system design interview?",
+      "back": "Start with requirements, then estimate scale, define the API and data model, sketch the high-level architecture, and only then go deeper on bottlenecks and trade-offs. This order keeps the design anchored to the actual problem."
+    },
+    {
+      "id": "d7894dab-ba95-47ff-b8d2-816d7e756712",
+      "front": "4. How do you distinguish between a latency problem and a throughput problem?",
+      "back": "Latency is about how long a single request takes, while throughput is about how many requests the system can sustain per unit time. The solution often differs: optimize the critical path for latency, and add parallelism or batching for throughput."
+    },
+    {
+      "id": "6c88f9d0-98f8-4f13-ac33-967c12d90e51",
+      "front": "5. When should you choose synchronous communication over async?",
+      "back": "Use synchronous calls when the user needs an immediate answer and the dependency is reliable enough to sit on the critical path. Use async when you want to decouple services, absorb bursts, or avoid blocking on slow downstream work."
+    },
+    {
+      "id": "2998b38f-ffa0-491a-ab61-98410522b1fe",
+      "front": "6. What non-functional requirements matter most in Staff-level design?",
+      "back": "Availability, latency, durability, consistency, scalability, security, operability, and cost are usually the main axes. The key is to rank them, because you cannot maximize all of them at once."
+    },
+    {
+      "id": "46f6e090-a874-4ac2-a26f-b958e4ad81c3",
+      "front": "7. How do you reason about state in a distributed system?",
+      "back": "Identify where the source of truth lives, how writes are replicated, what the recovery path is, and whether stale reads are acceptable. Most architecture mistakes come from treating cached or derived state as if it were authoritative."
+    },
+    {
+      "id": "347cc92b-1c98-4e70-aacb-e49286a61125",
+      "front": "8. What is the difference between control plane and data plane concerns?",
+      "back": "The data plane handles user traffic and must stay fast and reliable; the control plane manages configuration, orchestration, and topology changes. Separating them avoids coupling runtime latency to administrative operations."
+    },
+    {
+      "id": "e39d9159-507b-46eb-84b6-7bf159475277",
+      "front": "9. How do you estimate capacity without overfitting the design?",
+      "back": "Use rough traffic estimates, payload sizes, and access patterns to bound order-of-magnitude capacity, then add headroom for spikes and growth. You want sizing to expose bottlenecks, not pretend to predict the future exactly."
+    },
+    {
+      "id": "a7bc8b0b-5d4d-4e91-8f09-3469542dc7ca",
+      "front": "10. How do you design APIs so they can evolve safely?",
+      "back": "Prefer additive changes, version fields only when necessary, and backward-compatible request and response formats. Staff-level API design also considers idempotency, pagination, retries, and deprecation strategy."
+    },
+    {
+      "id": "dd7c1364-411b-410b-8a6a-715569aba028",
+      "front": "11. What makes an architecture operationally good, not just logically correct?",
+      "back": "It has clear metrics, logs, traces, alerts, rollback paths, and failure isolation. If a design cannot be observed or rolled back, it is not production-ready."
+    },
+    {
+      "id": "0bdf84c9-5ec9-41b0-a0fa-af436c7bc61d",
+      "front": "12. How do you decide between simplicity and premature scalability work?",
+      "back": "Build the simplest solution that satisfies the near-term scale and reliability requirements, but call out the exact trigger that would force a redesign. Staff engineers should optimize for changeability, not just for current size."
+    },
+    {
+      "id": "13999a92-e874-4527-a797-1b63f4d7454a",
+      "front": "13. What are the most important bottlenecks to look for first?",
+      "back": "Start with the database, external dependencies, serialization, and hot partitions, because those usually dominate real-world systems. Compute bottlenecks matter too, but they are often the wrong first bet in interview designs."
+    },
+    {
+      "id": "12246b88-b3b4-4ef0-ad51-e99a8335a333",
+      "front": "14. How do you reason about consistency requirements with product teams?",
+      "back": "Ask where stale data causes actual business harm versus where eventual consistency is acceptable. That separation often determines whether you need strong consistency, retries, or user-visible reconciliation."
+    },
+    {
+      "id": "50942098-42d9-4946-94e0-3bbe0e0af29e",
+      "front": "15. How should failure modes appear in your initial design?",
+      "back": "Assume dependencies fail, traffic spikes, retries amplify load, and operators make mistakes. A strong design explicitly describes fallback behavior, degradation, and what gets lost when things break."
+    },
+    {
+      "id": "e1f42cf1-3df7-4def-a392-2731550c5554",
+      "front": "16. What is the role of data flow diagrams in interviews?",
+      "back": "They make read paths, write paths, ownership, and external dependencies obvious fast. Good diagrams reduce ambiguity and help you reason about failure domains and scale boundaries."
+    },
+    {
+      "id": "18216a94-0a3e-420e-b367-6b0d86e5cc85",
+      "front": "17. How do you justify a design choice when there are multiple valid options?",
+      "back": "Compare the options against the dominant constraints and explain the trade-off you are optimizing for. Strong answers show you understand why the rejected option loses in this specific context."
+    },
+    {
+      "id": "884a8f5d-a76e-451b-aa2b-989f63725ccc",
+      "front": "18. What should you explicitly avoid in a Staff design answer?",
+      "back": "Avoid hand-waving around scale, ignoring operational concerns, or proposing a pattern without the constraint that makes it necessary. Vague architecture is usually worse than a narrower, well-justified one."
+    },
+    {
+      "id": "7d0f1363-cd99-4b68-b468-96fe8c1bd8ad",
+      "front": "19. How do you balance product velocity with long-term architecture?",
+      "back": "Use a design that is simple now but creates clear seams for future extraction, scaling, or replacement. The goal is to avoid locking the team into an irreversible shape too early."
+    },
+    {
+      "id": "cbef4851-e9d5-426d-9441-827ff24d12d6",
+      "front": "20. When is the correct answer to narrow the problem instead of scaling it?",
+      "back": "When the user problem is underspecified or the scale assumptions are still the main unknown, narrow the scope first. Staff engineers should reduce uncertainty before they optimize the wrong architecture."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "system-design",
+    "fundamentals",
+    "staff-engineer"
+  ]
+}

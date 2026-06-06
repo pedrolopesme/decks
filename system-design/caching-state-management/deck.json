@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "c9f6c0e7-9f30-4d15-a533-bf3ef6f5f3a1",
+  "name": "Caching and State Management Interview Prep",
+  "description": "20 advanced questions on cache design, invalidation, hot keys, TTLs, consistency, and resilient state handling at scale.",
+  "cards": [
+    {
+      "id": "7d78c8d2-12b1-4d9f-80f3-1d7a6172e1e0",
+      "front": "1. What problem is caching actually solving?",
+      "back": "Caching reduces latency, backend load, or both by serving repeated reads from a faster layer. The right answer always starts with which expensive operation the cache is shielding."
+    },
+    {
+      "id": "83d0f0d2-e9b2-4f4b-9e32-3c44a1bc54d1",
+      "front": "2. When should you use cache-aside?",
+      "back": "Cache-aside is best when the application can control reads and writes and tolerate cache misses explicitly. It is simple, flexible, and easy to reason about, but it pushes invalidation complexity into the app."
+    },
+    {
+      "id": "5c9bdfdf-2a46-4a5a-8f7d-6ed7f5e1d4d2",
+      "front": "3. What is the difference between cache-aside and read-through?",
+      "back": "Cache-aside makes the application manage loading, while read-through moves that responsibility into the cache layer. Read-through can simplify callers, but it also couples behavior to a specialized cache system."
+    },
+    {
+      "id": "b2f1a22e-08de-4f21-8eb8-2f5b9db48b3a",
+      "front": "4. Why is invalidation harder than filling a cache?",
+      "back": "Populating a cache is easy because you can miss occasionally without correctness issues. Invalidating is hard because stale data can outlive the source of truth and create subtle race conditions."
+    },
+    {
+      "id": "2a3d9b77-8b8c-4e63-a05d-8d0c5a09fa56",
+      "front": "5. Why is delete usually safer than update in cache-aside?",
+      "back": "Deleting forces the next read to repopulate from the source of truth, which reduces the chance of writing back stale data. Directly updating cached values increases the risk of races and partial state."
+    },
+    {
+      "id": "49a9f8c0-0f3a-4f77-b0fb-6cf13ca0df2f",
+      "front": "6. What is cache stampede, and why is it dangerous?",
+      "back": "Cache stampede happens when many requests miss at once and all rush the backend to rebuild the same value. It is dangerous because the cache failure becomes a backend overload event."
+    },
+    {
+      "id": "5f0caa2a-16f0-4b72-a1ec-1b9b5d2c0a8b",
+      "front": "7. How do you mitigate stampede?",
+      "back": "Use request coalescing, locking, early refresh, or randomized expiration so only one caller recomputes a hot value. The goal is to prevent synchronized misses."
+    },
+    {
+      "id": "cd76f7d6-dc76-4a4c-9d3c-58b4303fd84e",
+      "front": "8. What is TTL jitter and why does it help?",
+      "back": "TTL jitter adds randomness so many keys do not expire simultaneously. It reduces synchronized rebuild spikes and smooths backend load."
+    },
+    {
+      "id": "5f7de7b9-baf2-4e34-b9b8-7a7d78ac5b63",
+      "front": "9. How do you handle hot keys in a distributed cache?",
+      "back": "Popular keys can be protected with local caching, request coalescing, or a design that reduces read concentration. The important point is to remove single-key pressure before it becomes a system-wide bottleneck."
+    },
+    {
+      "id": "2d1f8a47-1d5c-4baf-bfc9-5cf4b6d8b3d8",
+      "front": "10. When should you use a negative cache?",
+      "back": "Negative caching is useful when missing data is common and expensive to recheck repeatedly. It reduces pointless load, but the TTL must be short enough to avoid hiding newly created data."
+    },
+    {
+      "id": "d4f4d8e7-91bc-4b14-bb2f-4f8737d6f3bd",
+      "front": "11. Why is cache pollution a real concern?",
+      "back": "A cache filled with low-value entries evicts the hot data it was meant to protect. Good eviction policy and strict cache admission rules matter more than raw capacity."
+    },
+    {
+      "id": "2be1a0be-0a03-44a8-8a44-0ea1a7f6f3fd",
+      "front": "12. How do LRU and LFU differ in practice?",
+      "back": "LRU favors recent access, while LFU favors frequent access over time. LRU is simpler and often good for recency-driven workloads; LFU is better when a small set stays popular for a long time."
+    },
+    {
+      "id": "a5c8c104-9c74-4bb6-8e1c-4a88ec10a0fe",
+      "front": "13. What changes when caching large objects?",
+      "back": "Large objects increase memory pressure, network cost, and serialization overhead, so caching them blindly can make things worse. Often the better choice is to cache a smaller representation, pointer, or precomputed summary."
+    },
+    {
+      "id": "7d19e931-84e6-4685-9c3d-6f4e76e9fbf3",
+      "front": "14. How do you make caches resilient to outages?",
+      "back": "Use fallbacks, timeouts, circuit breakers, and a backend that can absorb the extra traffic if the cache disappears. A cache outage should degrade latency, not take the system down."
+    },
+    {
+      "id": "b6d3e0ff-f0ff-4a6d-8814-3f4f2c5b8a6d",
+      "front": "15. Why do multi-region caches become tricky?",
+      "back": "Multi-region caching creates consistency lag, invalidation propagation, and failover complexity. If the data is not naturally region-scoped, you need a deliberate strategy for staleness and ownership."
+    },
+    {
+      "id": "3f14d5cf-94ac-4c5f-93e5-2dca4a1a0b89",
+      "front": "16. What does request coalescing buy you?",
+      "back": "It collapses identical concurrent cache misses into one downstream load. That reduces backend amplification and prevents thundering-herd behavior for hot items."
+    },
+    {
+      "id": "e9d7f7b5-2b83-4eb7-97fd-5c6a4f3bcf8f",
+      "front": "17. How do you think about cache versioning?",
+      "back": "Version the key or namespace so incompatible data formats can coexist during rollout. This makes schema changes safer and avoids stale reads from old serialized shapes."
+    },
+    {
+      "id": "b8c5d7a4-3a1f-4b6c-8c4e-6d1f2c3a7d9a",
+      "front": "18. What is a good strategy for warming a cache?",
+      "back": "Preload the most valuable keys before traffic starts, ideally from historical access patterns. Warming should be targeted, because loading everything wastes time and memory."
+    },
+    {
+      "id": "4aaf3d1d-5f9c-4f8e-8d3a-4c9c4f2f0d1b",
+      "front": "19. How do you debug stale-data issues in a cache hierarchy?",
+      "back": "Trace the write path, invalidation path, TTLs, key construction, and any cross-region or cross-layer propagation. Stale data usually comes from a broken assumption, not just a missing flush."
+    },
+    {
+      "id": "b0b1f1d4-0d7b-4eb6-81b1-7a6b1e2c4f3e",
+      "front": "20. When is caching the wrong optimization?",
+      "back": "If the data is rarely reused, highly volatile, or cheap to compute, a cache adds complexity without meaningful benefit. Staff engineers should cache only when the business value of lower latency or lower cost is clear."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "system-design",
+    "caching",
+    "state-management",
+    "performance"
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "b8d9c0a1-2f3e-4d5c-8a7b-1c2d3e4f5a6b",
+  "name": "APIs and Service Boundaries Interview Prep",
+  "description": "20 advanced questions on API design, service decomposition, versioning, backward compatibility, idempotency, and cross-service boundaries.",
+  "cards": [
+    {
+      "id": "c8d9e0f1-a2b3-4c5d-8e9f-0a1b2c3d4e5f",
+      "front": "1. What makes an API easy to evolve?",
+      "back": "An evolvable API has clear contracts, additive changes, stable identifiers, and explicit deprecation policy. Compatibility is a design requirement, not a post-launch cleanup task."
+    },
+    {
+      "id": "d8e9f0a1-b2c3-4d5e-8f9a-0b1c2d3e4f5a",
+      "front": "2. When should you split a service boundary?",
+      "back": "Split when ownership, scaling, deployment cadence, or failure domain meaningfully differ. If two parts of the system must always change together, splitting them may create more pain than value."
+    },
+    {
+      "id": "e8f9a0b1-c2d3-4e5f-8a9b-0c1d2e3f4a5b",
+      "front": "3. Why is backward compatibility so important?",
+      "back": "Because clients, jobs, and downstream services will not all upgrade at once. Backward compatibility lets you ship without forcing coordinated downtime across the ecosystem."
+    },
+    {
+      "id": "f8a9b0c1-d2e3-4f5a-8b9c-0d1e2f3a4b5c",
+      "front": "4. What is the difference between REST and gRPC in design interviews?",
+      "back": "REST is simpler and broadly accessible, while gRPC is often better for internal service-to-service calls with stricter contracts and lower overhead. The right choice depends on interoperability, latency, and tooling."
+    },
+    {
+      "id": "a9b0c1d2-e3f4-4a5b-8c9d-0e1f2a3b4c5d",
+      "front": "5. How should you model idempotent writes?",
+      "back": "Use client-generated request IDs, deduplication, or natural idempotency keys so retries do not create duplicates. This is especially important when the network can drop responses after the server already committed."
+    },
+    {
+      "id": "b9c0d1e2-f3a4-4b5c-8d9e-0f1a2b3c4d5e",
+      "front": "6. Why are pagination and filtering part of API design?",
+      "back": "Because unbounded reads are a reliability and performance problem, not just a UI detail. Pagination strategy also affects sort stability, consistency, and future compatibility."
+    },
+    {
+      "id": "c9d0e1f2-a3b4-4c5d-8e9f-0a1b2c3d4e5f",
+      "front": "7. How do you think about ownership across service boundaries?",
+      "back": "Each service should own its data and business rules, even if other services depend on them. Clear ownership reduces ambiguity, duplicate logic, and accidental coupling."
+    },
+    {
+      "id": "d9e0f1a2-b3c4-4d5e-8f9a-0b1c2d3e4f5a",
+      "front": "8. What is an anti-corruption layer and when do you need one?",
+      "back": "An ACL translates between external models and your internal domain so a legacy or third-party contract does not infect your core design. It is useful when external semantics are messy or unstable."
+    },
+    {
+      "id": "e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a5b",
+      "front": "9. Why are versioned schemas often better than versioned endpoints?",
+      "back": "Schema versioning can preserve a single endpoint while still evolving payload shape and contract semantics. That keeps the API surface smaller and usually simplifies client adoption."
+    },
+    {
+      "id": "f9a0b1c2-d3e4-4f5a-8b9c-0d1e2f3a4b5c",
+      "front": "10. How do you design for partial failure across services?",
+      "back": "Use timeouts, retries, fallbacks, and bounded isolation so one bad dependency does not freeze the entire request path. Service boundaries only help if the failure domains are truly independent."
+    },
+    {
+      "id": "a0b1c2d3-e4f5-4a6b-8c9d-0e1f2a3b4c5d",
+      "front": "11. What makes an API hard to debug?",
+      "back": "Hidden side effects, unclear ownership, inconsistent error shapes, and vague request correlation all make debugging painful. Great APIs are boring to operate because they are predictable."
+    },
+    {
+      "id": "b0c1d2e3-f4a5-4b6c-8d9e-0f1a2b3c4d5e",
+      "front": "12. How should errors be modeled in APIs?",
+      "back": "Errors should be stable, machine-readable, and distinct enough for callers to know whether to retry, fix input, or escalate. Vague generic errors push complexity into every client."
+    },
+    {
+      "id": "c0d1e2f3-a4b5-4c6d-8e9f-0a1b2c3d4e5f",
+      "front": "13. Why does API idempotency matter for mobile and flaky networks?",
+      "back": "Mobile clients and flaky links create duplicate submissions and ambiguous outcomes. Idempotency turns uncertainty into safe retry behavior."
+    },
+    {
+      "id": "d0e1f2a3-b4c5-4d6e-8f9a-0b1c2d3e4f5a",
+      "front": "14. What is the danger of too many service boundaries?",
+      "back": "Excessive boundaries create chatty dependencies, operational overhead, and slower product delivery. A good decomposition should reduce coupling, not just multiply services."
+    },
+    {
+      "id": "e0f1a2b3-c4d5-4e6f-8a9b-0c1d2e3f4a5b",
+      "front": "15. How do you think about read models versus write models?",
+      "back": "Write models protect invariants and business rules; read models optimize retrieval and user experience. Separating them can simplify the system when read and write needs diverge."
+    },
+    {
+      "id": "f0a1b2c3-d4e5-4f6a-8b9c-0d1e2f3a4b5c",
+      "front": "16. What should be documented in an API contract?",
+      "back": "Input and output shapes, error semantics, auth requirements, rate limits, idempotency, and compatibility expectations. A contract should prevent guesswork for consumers."
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5f",
+      "front": "17. How do you introduce a breaking API change safely?",
+      "back": "Use parallel fields or endpoints, migrate clients incrementally, observe adoption, and only then retire the old shape. Breaking changes are a rollout problem as much as a code problem."
+    },
+    {
+      "id": "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5f",
+      "front": "18. What is the role of service ownership in incident response?",
+      "back": "Ownership determines who gets paged, who can mitigate, and who can safely make trade-offs under pressure. If ownership is unclear, recovery gets slower."
+    },
+    {
+      "id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5a",
+      "front": "19. Why do APIs need rate limiting?",
+      "back": "Rate limiting protects the backend from abusive, accidental, or bursty traffic and helps enforce fairness across clients. It is both a capacity tool and an abuse-prevention tool."
+    },
+    {
+      "id": "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5b",
+      "front": "20. When is a monolith a better choice than service splitting?",
+      "back": "When the domain is small, the team is small, and the boundaries are still unstable, a monolith can be simpler and safer. Staff engineers should split only when the split clearly improves ownership or scale."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "apis",
+    "microservices",
+    "system-design",
+    "service-boundaries"
+  ]
+}

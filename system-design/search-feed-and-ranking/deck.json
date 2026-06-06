@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "e2f3a4b5-c6d7-4e8f-9a0b-1c2d3e4f5a6b",
+  "name": "Search, Feed, and Ranking Interview Prep",
+  "description": "20 advanced questions on search systems, feeds, ranking, freshness, fanout, recommendation trade-offs, and large-scale retrieval.",
+  "cards": [
+    {
+      "id": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c",
+      "front": "1. What is the difference between search and feed systems?",
+      "back": "Search is usually user-initiated and query-driven, while feeds are proactive and continuously assembled. That difference changes indexing, freshness, and ranking strategy."
+    },
+    {
+      "id": "a2b3c4d5-e6f7-4a8b-9c0d-1e2f3a4b5c6d",
+      "front": "2. Why is ranking hard at scale?",
+      "back": "Because ranking is not just sorting; it mixes relevance, freshness, personalization, safety, and business goals under tight latency budgets. The challenge is choosing the signals that matter most."
+    },
+    {
+      "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "front": "3. How do inverted indexes work?",
+      "back": "They map terms to the documents that contain them, which makes retrieval efficient for text search. The index structure is what turns search from a scan into a lookup problem."
+    },
+    {
+      "id": "c2d3e4f5-a6b7-4c8d-9e0f-1a2b3c4d5e6f",
+      "front": "4. What is fanout in feed generation?",
+      "back": "Fanout pushes new content to many recipients eagerly, while fanout-on-read reconstructs it when the user opens the feed. Each approach trades write cost for read cost differently."
+    },
+    {
+      "id": "d2e3f4a5-b6c7-4d8e-9f0a-1b2c3d4e5f6a",
+      "front": "5. When is fanout-on-write better than fanout-on-read?",
+      "back": "It is better when reads must be very fast and the audience size is manageable. It shifts work to write time, which is often worth it for high-read products."
+    },
+    {
+      "id": "e2f3a4b5-c6d7-4e8f-9a0b-1c2d3e4f5a6c",
+      "front": "6. What makes freshness difficult?",
+      "back": "Freshness competes with cache efficiency, ranking stability, and ingestion cost. In many products, users want both fast updates and stable ranking, which are in tension."
+    },
+    {
+      "id": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6d",
+      "front": "7. Why do feeds often need multiple stages?",
+      "back": "A candidate generation stage narrows the corpus, then a ranking stage applies richer models to a smaller set. This keeps latency manageable while still supporting sophisticated relevance logic."
+    },
+    {
+      "id": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d",
+      "front": "8. How do you balance personalization with relevance?",
+      "back": "Personalization improves engagement but can overfit the user into a narrow bubble or hurt system explainability. Staff-level designs choose a measured blend instead of maximizing one signal blindly."
+    },
+    {
+      "id": "b3c4d5e6-f7a8-4b9c-0d1e-2f3a4b5c6d7e",
+      "front": "9. What is the role of deduplication in feeds?",
+      "back": "Deduping avoids repeated content, redundant notifications, or repeated search results that look broken to users. It is a practical quality filter, not just a nice-to-have."
+    },
+    {
+      "id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "front": "10. How do you handle ranking latency budgets?",
+      "back": "Use cheap features first, precompute what you can, and reserve expensive scoring for a small candidate set. Latency budgets force explicit trade-offs between model quality and user experience."
+    },
+    {
+      "id": "d3e4f5a6-b7c8-4d9e-0f1a-2b3c4d5e6f7a",
+      "front": "11. Why is relevance evaluation difficult?",
+      "back": "Because offline metrics do not always match what users actually do in production. A ranking system needs both offline judgment and online experimentation."
+    },
+    {
+      "id": "e3f4a5b6-c7d8-4e9f-0a1b-2c3d4e5f6a7b",
+      "front": "12. What is the importance of query understanding?",
+      "back": "Query understanding improves recall and precision by normalizing intent, synonyms, spelling, and ambiguity. Without it, even a strong index can return the wrong result set."
+    },
+    {
+      "id": "f3a4b5c6-d7e8-4f9a-0b1c-2d3e4f5a6b7d",
+      "front": "13. How do you think about abuse in search and feed products?",
+      "back": "Abuse can manipulate ranking, spam results, or exploit recommendation loops, so safety signals need to be part of the design. Search quality and abuse prevention are tightly linked."
+    },
+    {
+      "id": "a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8e",
+      "front": "14. What is the cost of stale indexing?",
+      "back": "Stale indexes produce missing, duplicated, or outdated results that users notice quickly. The system needs a freshness model and a clear ingestion SLA."
+    },
+    {
+      "id": "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8f",
+      "front": "15. How do you scale a large feed store?",
+      "back": "Partition by user or audience, precompute common slices, and keep the hot read path small. The goal is to avoid rebuilding large timelines on demand."
+    },
+    {
+      "id": "c4d5e6f7-a8b9-4c0d-1e2f-3a4b5c6d7e8a",
+      "front": "16. What is the trade-off between global and localized ranking?",
+      "back": "Global ranking can give consistent quality, while localized ranking can account for user or region context better. The best system usually combines shared and context-specific signals."
+    },
+    {
+      "id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8b",
+      "front": "17. Why are offline precomputations useful?",
+      "back": "They move expensive work out of the request path and make latency predictable. Precomputation is especially valuable when many users share similar candidate sets or features."
+    },
+    {
+      "id": "e4f5a6b7-c8d9-4e0f-1a2b-3c4d5e6f7a8b",
+      "front": "18. How do you decide what to cache in a feed system?",
+      "back": "Cache the expensive, frequently reused derivations that materially reduce read latency. Caching everything usually just adds staleness and invalidation work."
+    },
+    {
+      "id": "f4a5b6c7-d8e9-4f1a-2b3c-4d5e6f7a8b9c",
+      "front": "19. What is the role of experimentation in ranking systems?",
+      "back": "A ranking change should be validated with A/B testing or a controlled rollout because offline metrics are not enough. Real users often behave differently than model judgments predict."
+    },
+    {
+      "id": "a5b6c7d8-e9f0-4a1b-2c3d-4e5f6a7b8c9d",
+      "front": "20. When is a simpler retrieval model better than a complex ranking stack?",
+      "back": "When the product value is mostly in correctness, speed, or predictable ordering rather than sophisticated personalization. Simpler systems are often easier to tune and more trustworthy."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "search",
+    "feed",
+    "ranking",
+    "recommendations"
+  ]
+}

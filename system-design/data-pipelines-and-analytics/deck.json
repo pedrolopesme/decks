@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "b3c4d5e6-f7a8-4b9c-0d1e-2f3a4b5c6d7f",
+  "name": "Data Pipelines and Analytics Interview Prep",
+  "description": "20 advanced questions on ETL/ELT, CDC, streaming, batch processing, warehouse design, schema evolution, and replayability.",
+  "cards": [
+    {
+      "id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7a",
+      "front": "1. What is the difference between ETL and ELT?",
+      "back": "ETL transforms before loading into the destination, while ELT loads raw data first and transforms later in the warehouse or processing engine. The better choice depends on compute location and data shape."
+    },
+    {
+      "id": "d3e4f5a6-b7c8-4d9e-0f1a-2b3c4d5e6f7b",
+      "front": "2. Why is CDC important in modern data systems?",
+      "back": "Change data capture streams database changes out of the source system so downstream pipelines can stay in sync without invasive application changes. It is a practical bridge between operational and analytical worlds."
+    },
+    {
+      "id": "e3f4a5b6-c7d8-4e9f-0a1b-2c3d4e5f6a7c",
+      "front": "3. What is the trade-off between batch and streaming pipelines?",
+      "back": "Batch is simpler and often more cost-efficient for large periodic jobs, while streaming gives lower latency and more continuous freshness. Most real systems mix both."
+    },
+    {
+      "id": "f3a4b5c6-d7e8-4f9a-0b1c-2d3e4f5a6b7e",
+      "front": "4. Why is schema evolution hard in pipelines?",
+      "back": "Because producers and consumers do not all upgrade at the same time, and a schema change can break downstream processing or historical replay. Compatibility rules are essential."
+    },
+    {
+      "id": "a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8f",
+      "front": "5. What is a warehouse versus a lakehouse?",
+      "back": "A warehouse is optimized for curated analytics, while a lakehouse tries to combine raw storage flexibility with warehouse-style query performance and governance. The choice is often about control versus flexibility."
+    },
+    {
+      "id": "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8a",
+      "front": "6. How do you design for late-arriving data?",
+      "back": "You need watermarks, reprocessing logic, and an aggregation strategy that can tolerate out-of-order updates. Late data is normal, not exceptional, in production pipelines."
+    },
+    {
+      "id": "c4d5e6f7-a8b9-4c0d-1e2f-3a4b5c6d7e8b",
+      "front": "7. Why is replayability important in analytics?",
+      "back": "Replay lets you recompute derived datasets after a bug, schema change, or logic update. If you cannot replay, you cannot safely correct historical mistakes."
+    },
+    {
+      "id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8c",
+      "front": "8. What is the role of partitioning in data pipelines?",
+      "back": "Partitioning improves parallelism and makes large jobs tractable, but bad partition keys can create skew and slow jobs dramatically. Good partitioning is about balancing work and locality."
+    },
+    {
+      "id": "e4f5a6b7-c8d9-4e0f-1a2b-3c4d5e6f7a8c",
+      "front": "9. Why do analytics systems need idempotency too?",
+      "back": "Because retries, backfills, and reprocessing can otherwise duplicate counts or corrupt aggregates. Analytics correctness depends on safe repetition just like transactional systems do."
+    },
+    {
+      "id": "f4a5b6c7-d8e9-4f1a-2b3c-4d5e6f7a8b9d",
+      "front": "10. How do you think about data quality checks?",
+      "back": "Add validation for completeness, freshness, distribution shifts, and schema correctness at ingestion and transformation boundaries. Quality checks are what keep the pipeline from silently lying."
+    },
+    {
+      "id": "a5b6c7d8-e9f0-4a1b-2c3d-4e5f6a7b8c9e",
+      "front": "11. What makes a pipeline operationally reliable?",
+      "back": "A reliable pipeline has observability, retries that do not multiply damage, checkpointing, and clear failure isolation. You should be able to tell which stage is broken and replay safely."
+    },
+    {
+      "id": "b5c6d7e8-f9a0-4b1c-2d3e-4f5a6b7c8d9f",
+      "front": "12. Why are watermark and checkpoint concepts important?",
+      "back": "Watermarks help bound how late events can be, and checkpoints let processing resume without starting over. Together they make streaming jobs recoverable."
+    },
+    {
+      "id": "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9a",
+      "front": "13. How do you handle backfills?",
+      "back": "Backfills should be planned so they do not overload production systems or corrupt live aggregates. They usually need separate capacity, controls, and clear provenance."
+    },
+    {
+      "id": "d5e6f7a8-b9c0-4d1e-2f3a-4b5c6d7e8f9b",
+      "front": "14. What is the difference between raw, curated, and serving datasets?",
+      "back": "Raw data is the source-of-truth ingest, curated data is cleaned and modeled for analysis, and serving data is optimized for downstream product or dashboard use. Separating them keeps responsibilities clear."
+    },
+    {
+      "id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9d",
+      "front": "15. Why does data lineage matter?",
+      "back": "Lineage shows where data came from, how it was transformed, and which downstream assets depend on it. It is critical for debugging, governance, and impact analysis."
+    },
+    {
+      "id": "f5a6b7c8-d9e0-4f1a-2b3c-4d5e6f7a8b9e",
+      "front": "16. How do you think about cost in analytics pipelines?",
+      "back": "Cost is driven by scan volume, recomputation, storage duplication, and retention policy. Staff-level designs explicitly optimize expensive queries and repeated recomputation."
+    },
+    {
+      "id": "a6b7c8d9-e0f1-4a2b-3c4d-5e6f7a8b9c0f",
+      "front": "17. What is the danger of duplicate events in analytics?",
+      "back": "Duplicates inflate counts and poison downstream aggregates if you are not deduplicating or designing for exactly-once semantics. The pipeline must define how duplicates are detected or tolerated."
+    },
+    {
+      "id": "b6c7d8e9-f0a1-4b2c-3d4e-5f6a7b8c9d0a",
+      "front": "18. Why do analytics systems need retention policies?",
+      "back": "Retention controls cost, compliance, and query feasibility by limiting how much historical data stays online. A good retention plan balances business value and storage cost."
+    },
+    {
+      "id": "c6d7e8f9-a0b1-4c2d-3e4f-5a6b7c8d9e0b",
+      "front": "19. What is the role of data contracts?",
+      "back": "Data contracts define the shape, timing, and quality expectations between producers and consumers. They prevent downstream surprises when upstream teams change behavior."
+    },
+    {
+      "id": "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0c",
+      "front": "20. When is a pipeline too complex for the value it provides?",
+      "back": "When the freshness requirement is modest and the data product is not operationally critical, simple scheduled jobs may be enough. Complexity should follow business value, not data fashion."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "data-pipelines",
+    "analytics",
+    "streaming",
+    "etl"
+  ]
+}

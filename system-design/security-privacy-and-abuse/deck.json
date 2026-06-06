@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "e9f0a1b2-c3d4-4e5f-8a9b-0c1d2e3f4a5c",
+  "name": "Security, Privacy, and Abuse Interview Prep",
+  "description": "20 advanced questions on authentication, authorization, privacy, secrets, abuse prevention, rate limiting, and tenant isolation.",
+  "cards": [
+    {
+      "id": "f9a0b1c2-d3e4-4f5a-8b9c-0d1e2f3a4b5d",
+      "front": "1. What is the difference between authentication and authorization?",
+      "back": "Authentication answers who the user is, while authorization answers what the user is allowed to do. Mixing them up often leads to flawed security design."
+    },
+    {
+      "id": "a0b1c2d3-e4f5-4a6b-8c9d-0e1f2a3b4c5e",
+      "front": "2. Why is least privilege so important?",
+      "back": "Least privilege limits the damage of compromised credentials, buggy code, or accidental misuse. Security gets stronger when access is narrow by default."
+    },
+    {
+      "id": "b0c1d2e3-f4a5-4b6c-8d9e-0f1a2b3c4d5f",
+      "front": "3. What is the danger of storing secrets in application code?",
+      "back": "Secrets in code are hard to rotate, easy to leak, and often replicated everywhere. A better design uses a secret manager, short-lived credentials, and strong access controls."
+    },
+    {
+      "id": "c0d1e2f3-a4b5-4c6d-8e9f-0a1b2c3d4e5a",
+      "front": "4. Why should privacy be designed into the system early?",
+      "back": "Because data collection, retention, access, and deletion decisions become expensive to change later. Privacy-by-design avoids creating data liabilities that the company cannot safely manage."
+    },
+    {
+      "id": "d0e1f2a3-b4c5-4d6e-8f9a-0b1c2d3e4f5b",
+      "front": "5. What is tenant isolation and why does it matter?",
+      "back": "Tenant isolation prevents one customer or workload from impacting another through shared resources, data, or permissions. It is essential in multi-tenant systems for both security and reliability."
+    },
+    {
+      "id": "e0f1a2b3-c4d5-4e6f-8a9b-0c1d2e3f4a5c",
+      "front": "6. How do rate limits help with abuse prevention?",
+      "back": "Rate limits cap how much damage one client or attacker can do in a fixed time window. They are a practical control for spam, scraping, brute force, and accidental overload."
+    },
+    {
+      "id": "f0a1b2c3-d4e5-4f6a-8b9c-0d1e2f3a4b5d",
+      "front": "7. What is the role of audit logs?",
+      "back": "Audit logs provide a forensic trail of who did what and when, which matters for incident response, compliance, and abuse investigation. They should be tamper-resistant and access-controlled."
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5e",
+      "front": "8. Why is input validation a security boundary?",
+      "back": "Invalid or malicious input can become injection, denial of service, or logic abuse if not checked early. Good validation is not just correctness; it is a defensive measure."
+    },
+    {
+      "id": "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e",
+      "front": "9. What is the difference between encryption in transit and at rest?",
+      "back": "Encryption in transit protects data while moving across networks, while encryption at rest protects stored data from unauthorized access. Both matter because threats exist in both states."
+    },
+    {
+      "id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5b",
+      "front": "10. Why is key rotation important?",
+      "back": "Rotating keys limits the lifetime of any compromised secret and reduces long-term exposure. A system that cannot rotate keys safely is fragile by design."
+    },
+    {
+      "id": "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5c",
+      "front": "11. How do you think about abuse detection?",
+      "back": "Look for behavioral anomalies, velocity spikes, credential stuffing patterns, and repeated policy violations. Detection should feed into automated response and human review."
+    },
+    {
+      "id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5d",
+      "front": "12. What is the practical value of MFA?",
+      "back": "MFA reduces the chance that a stolen password alone can compromise an account. It is one of the highest-value controls for user-facing systems."
+    },
+    {
+      "id": "f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5d",
+      "front": "13. Why is data minimization important?",
+      "back": "The less sensitive data you collect and retain, the less exposure you have during breaches, abuse, or compliance requests. Minimization reduces risk and operational burden."
+    },
+    {
+      "id": "a2b3c4d5-e6f7-4a8b-9c0d-1e2f3a4b5c6e",
+      "front": "14. How do you secure service-to-service communication?",
+      "back": "Use strong identity, mutual authentication where appropriate, scoped credentials, and encrypted transport. Internal traffic is still untrusted traffic."
+    },
+    {
+      "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6f",
+      "front": "15. What is the danger of overly broad permissions?",
+      "back": "Broad permissions make privilege escalation and accidental damage much easier. Security design should assume humans and services will make mistakes."
+    },
+    {
+      "id": "c2d3e4f5-a6b7-4c8d-9e0f-1a2b3c4d5e6a",
+      "front": "16. Why are privacy deletion workflows hard?",
+      "back": "Data is usually duplicated across services, logs, caches, backups, and derived stores. A real deletion workflow must account for every place the data can live."
+    },
+    {
+      "id": "d2e3f4a5-b6c7-4d8e-9f0a-1b2c3d4e5f6b",
+      "front": "17. What is the role of secure defaults?",
+      "back": "Secure defaults reduce the chance that a developer accidentally ships an unsafe configuration. If the easiest path is unsafe, the system is already failing."
+    },
+    {
+      "id": "e2f3a4b5-c6d7-4e8f-9a0b-1c2d3e4f5a6c",
+      "front": "18. How do you balance usability with security?",
+      "back": "Security should be strong enough to reduce abuse but not so heavy that users or operators bypass it. Good design makes the secure path the easiest path."
+    },
+    {
+      "id": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6d",
+      "front": "19. What is the difference between masking and protecting data?",
+      "back": "Masking hides sensitive values in some contexts, while protection controls access and lifecycle more broadly. Masking is useful, but it is not a replacement for true access control."
+    },
+    {
+      "id": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7e",
+      "front": "20. When should security controls be region- or tenant-specific?",
+      "back": "When regulations, risk profiles, or tenant isolation requirements differ materially across users or markets. Uniform controls are simpler, but sometimes they are not sufficient."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "security",
+    "privacy",
+    "abuse-prevention",
+    "authentication"
+  ]
+}

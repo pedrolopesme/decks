@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "fc9d3b2a-1e4f-4c6d-8a7b-3c2d1e0f9a8b",
+  "name": "Reliability and Resilience Interview Prep",
+  "description": "20 advanced questions on graceful degradation, retries, timeouts, bulkheads, incident response, and failure-domain design.",
+  "cards": [
+    {
+      "id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5c",
+      "front": "1. What is the difference between reliability and resilience?",
+      "back": "Reliability is about the system staying correct and available under normal and abnormal conditions, while resilience is about how well it recovers from failure. A resilient system degrades and restores gracefully."
+    },
+    {
+      "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5e",
+      "front": "2. Why are timeouts mandatory in distributed systems?",
+      "back": "Without timeouts, callers can wait forever on a broken dependency and tie up resources. Timeouts turn silent hangs into explicit failure paths."
+    },
+    {
+      "id": "b1c2d3e4-f5a6-4b7c-8d9e-0f1a2b3c4d5e",
+      "front": "3. What is the danger of retries?",
+      "back": "Retries can magnify load, duplicate side effects, and create retry storms during incidents. They need limits, jitter, and a clear idempotency story."
+    },
+    {
+      "id": "c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f",
+      "front": "4. What does a circuit breaker actually protect?",
+      "back": "It protects the system from repeatedly calling a failing dependency and wasting resources on hopeless requests. It trades short-term rejection for long-term stability."
+    },
+    {
+      "id": "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a",
+      "front": "5. How do bulkheads improve resilience?",
+      "back": "Bulkheads isolate resource pools so one failure cannot exhaust the entire system. They are the difference between a contained incident and a cascading outage."
+    },
+    {
+      "id": "e2f3a4b5-c6d7-4e8f-9a0b-1c2d3e4f5a6b",
+      "front": "6. What is graceful degradation?",
+      "back": "Graceful degradation means the system continues to provide reduced but useful functionality when a dependency or capacity limit is hit. It is better than total failure because it preserves the user journey."
+    },
+    {
+      "id": "f3a4b5c6-d7e8-4f9a-0b1c-2d3e4f5a6b7c",
+      "front": "7. What is the role of idempotency in resilience?",
+      "back": "Idempotency makes retries safe and lets the system recover from uncertain network outcomes without duplicating work. It is one of the most important tools for stable recovery."
+    },
+    {
+      "id": "a4b5c6d7-e8f9-4a0b-1c2d-3e4f5a6b7c8d",
+      "front": "8. How do you choose between fail-open and fail-closed behavior?",
+      "back": "Fail-open preserves availability but may weaken correctness or security, while fail-closed protects correctness or safety at the cost of availability. The choice depends on the business risk of the failure."
+    },
+    {
+      "id": "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e",
+      "front": "9. Why are SLOs and error budgets part of reliability design?",
+      "back": "They turn reliability into an explicit product contract instead of a vague hope. Error budgets also tell teams when to slow feature work and pay down operational debt."
+    },
+    {
+      "id": "c4d5e6f7-a8b9-4c0d-1e2f-3a4b5c6d7e8f",
+      "front": "10. What makes a good fallback path?",
+      "back": "A good fallback is cheaper, simpler, and known to work under stress, even if it provides reduced functionality. If the fallback is not tested, it is not a real fallback."
+    },
+    {
+      "id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "front": "11. How do you design for partial outages?",
+      "back": "Assume some regions, dependencies, or pods fail while the rest of the system keeps running. The design should route around the failure and preserve the highest-priority user flows."
+    },
+    {
+      "id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
+      "front": "12. Why are incident runbooks important?",
+      "back": "Runbooks reduce decision-making time during high-pressure events and make recovery more repeatable. They also expose gaps in monitoring and operational ownership."
+    },
+    {
+      "id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c",
+      "front": "13. What is the right way to think about chaos testing?",
+      "back": "Chaos testing deliberately exercises failure paths so you learn whether the system really degrades as designed. It is valuable when it validates assumptions, not when it creates uncontrolled noise."
+    },
+    {
+      "id": "a6b7c8d9-e0f1-4a2b-3c4d-5e6f7a8b9c0d",
+      "front": "14. What causes cascading failures?",
+      "back": "Usually a combination of retries, shared dependencies, saturated resources, and poor isolation. Cascades happen when one failure turns into a load multiplier for the rest of the system."
+    },
+    {
+      "id": "b6c7d8e9-f0a1-4b2c-3d4e-5f6a7b8c9d0e",
+      "front": "15. How do you think about capacity headroom?",
+      "back": "Headroom is the buffer that keeps the system stable during spikes, failure of a node, or partial degradation. A system with no headroom is one incident away from collapse."
+    },
+    {
+      "id": "c6d7e8f9-a0b1-4c2d-3e4f-5a6b7c8d9e0f",
+      "front": "16. Why does observability matter for resilience?",
+      "back": "Because you cannot safely recover from what you cannot see. Metrics, logs, traces, and alerts tell you whether mitigation is working or just hiding the problem."
+    },
+    {
+      "id": "d6e7f8a9-b0c1-4d2e-3f4a-5b6c7d8e9f0a",
+      "front": "17. How should you handle a dependency outage?",
+      "back": "Stop hammering the dependency, degrade or shed work, and move traffic to a safe fallback if one exists. The goal is to protect the rest of the system while the dependency recovers."
+    },
+    {
+      "id": "e6f7a8b9-c0d1-4e2f-3a4b-5c6d7e8f9a0b",
+      "front": "18. What is the difference between availability and recoverability?",
+      "back": "Availability is the ability to serve requests now; recoverability is how quickly the system can return to healthy operation after failure. Both matter, but they are not the same metric."
+    },
+    {
+      "id": "f7a8b9c0-d1e2-4f3a-4b5c-6d7e8f9a0b1c",
+      "front": "19. What should postmortems change?",
+      "back": "They should change systems, runbooks, alerting, ownership, or design assumptions, not just document the incident. If nothing changes, the postmortem was just paperwork."
+    },
+    {
+      "id": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1d",
+      "front": "20. When is resilience engineering overkill?",
+      "back": "It is overkill for low-value, low-criticality flows that can tolerate simple retries or occasional failure. The investment should match the business impact of an outage."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "system-design",
+    "reliability",
+    "resilience",
+    "operations"
+  ]
+}

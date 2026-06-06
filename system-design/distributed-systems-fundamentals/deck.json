@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "93baa2f4-0874-4df7-b684-bee8de2ee9f6",
+  "name": "Distributed Systems Fundamentals Interview Prep",
+  "description": "20 advanced questions on consistency, consensus, replication, ordering, failure detection, and split-brain behavior in distributed systems.",
+  "cards": [
+    {
+      "id": "7f91a310-f4f4-4c4b-b4e8-d10f8b51bcc0",
+      "front": "1. What is partition tolerance, really?",
+      "back": "It means the system keeps operating, in some form, when the network splits and nodes cannot reliably talk to each other. In practice, every real distributed system must assume partitions happen."
+    },
+    {
+      "id": "e6ea4b6d-5a6d-4458-b1b2-8bdc7b6a7e5d",
+      "front": "2. What is the difference between consistency models?",
+      "back": "Consistency models define what a read is allowed to observe after a write. Linearizability is strongest, while eventual consistency allows temporary divergence that later converges."
+    },
+    {
+      "id": "f0d11f63-6092-49e7-81cb-dd654f621255",
+      "front": "3. Why are consensus protocols important?",
+      "back": "They let multiple nodes agree on one ordered history of decisions even when some nodes fail. That agreement is the basis for leader election, replicated logs, and strongly consistent metadata."
+    },
+    {
+      "id": "522d05a7-2abf-435d-9ff1-dae54d5322f7",
+      "front": "4. How do Raft and Paxos fit into system design interviews?",
+      "back": "They are reference points for understanding how a cluster elects a leader and keeps a consistent log. You usually need the concepts, not the formal proofs."
+    },
+    {
+      "id": "5c66010b-23c3-43e6-b384-5df4610268a6",
+      "front": "5. What is quorum, and why does it matter?",
+      "back": "A quorum is the minimum number of replicas required to read or write safely. By tuning read and write quorums, you can trade availability, latency, and consistency."
+    },
+    {
+      "id": "786f1866-dfc2-4489-b93b-a21290a7b590",
+      "front": "6. What causes split-brain?",
+      "back": "Split-brain happens when two sides of a partition both believe they are the primary and accept conflicting writes. It is a classic reason for fencing tokens and careful leader election."
+    },
+    {
+      "id": "8b76288a-2f73-46d2-96df-37a44b606051",
+      "front": "7. How do you think about replication lag?",
+      "back": "Replication lag is the time between a write on the primary and the write becoming visible on replicas. It matters because it creates stale reads, failover risk, and correctness edge cases."
+    },
+    {
+      "id": "2bd81ec0-840e-4bae-89a4-4e7369935c76",
+      "front": "8. What is the difference between primary-backup and multi-leader replication?",
+      "back": "Primary-backup centralizes writes and simplifies conflict handling, while multi-leader improves local write availability but introduces conflict resolution complexity. The choice is usually driven by latency and failure tolerance."
+    },
+    {
+      "id": "c796fd24-2d2b-4b5a-8fc4-576f477f5a5e",
+      "front": "9. Why is clock sync hard in distributed systems?",
+      "back": "Physical clocks drift, network delays vary, and no system can assume perfectly synchronized time. That is why logical clocks and ordering schemes often matter more than wall-clock timestamps."
+    },
+    {
+      "id": "cf8f0ee3-ed6e-4679-9cd2-28a16ef3ee46",
+      "front": "10. What is the role of logical clocks?",
+      "back": "Logical clocks help reason about causality and event ordering when wall-clock time is unreliable. They are useful for conflict resolution, versioning, and detecting concurrent updates."
+    },
+    {
+      "id": "47c6df55-a1be-483b-9389-68a86ff79bda",
+      "front": "11. Why is exactly-once processing so hard?",
+      "back": "A system can usually do at-least-once or at-most-once, but true exactly-once requires coordination across retries, storage, and side effects. The practical answer is usually idempotency plus deduplication."
+    },
+    {
+      "id": "b1e333b1-c4f6-4102-b03f-a414626fb18d",
+      "front": "12. What is idempotency in distributed APIs?",
+      "back": "An operation is idempotent if repeating it produces the same external result. That property makes retries safe and is essential for unreliable networks."
+    },
+    {
+      "id": "bbb8c6ad-7dd0-418f-93de-a85094172daf",
+      "front": "13. How do you handle duplicate messages or duplicate requests?",
+      "back": "Use request IDs, deduplication storage, idempotent writes, or a transaction log that records what has already been processed. The goal is to make replay harmless."
+    },
+    {
+      "id": "ce7e4f08-aff7-4bdc-89e9-b6ac6dd560c7",
+      "front": "14. What is the difference between failure detection and failure recovery?",
+      "back": "Detection answers whether a node or dependency is likely unhealthy; recovery answers what the system does next. A good design does not confuse a suspicion of failure with proof of failure."
+    },
+    {
+      "id": "91a148fb-0b29-47e0-b60f-54b8903403a4",
+      "front": "15. Why are retries dangerous in distributed systems?",
+      "back": "Retries can amplify traffic, duplicate side effects, and turn a partial outage into a total one. They need limits, jitter, and backoff so they help availability instead of destroying it."
+    },
+    {
+      "id": "a7a62848-5e69-4137-8c22-e43bc8b92526",
+      "front": "16. What is the role of fencing tokens?",
+      "back": "Fencing tokens ensure that an old or partitioned writer cannot continue mutating state after a newer leader takes over. They are a practical defense against zombie leaders."
+    },
+    {
+      "id": "4c3bedac-dc99-4a4e-83d5-0031a93b2f34",
+      "front": "17. How do CRDTs differ from traditional conflict resolution?",
+      "back": "CRDTs are built to converge automatically without coordination, which makes them useful in highly available systems. Traditional conflict resolution often requires explicit application logic after divergence."
+    },
+    {
+      "id": "87a1bde6-43b0-450f-aae7-a309b7c32e20",
+      "front": "18. What is the PACELC trade-off?",
+      "back": "PACELC says a distributed system trades availability and consistency during partitions, and latency versus consistency when the network is healthy. It is a useful framework for explaining real design choices."
+    },
+    {
+      "id": "6be5f79e-4797-4272-a331-8cadaccaac7d",
+      "front": "19. Why does ordering matter so much?",
+      "back": "Many correctness bugs are really ordering bugs: duplicate processing, missed causality, or state applied out of sequence. If the order matters, the architecture must make that guarantee explicit."
+    },
+    {
+      "id": "1fe41fb0-2290-4836-b90e-20c54a9f921c",
+      "front": "20. When is a distributed system too complex for its value?",
+      "back": "When the business problem is simple enough that the operational and correctness costs outweigh the benefit of distribution. Staff engineers should be willing to keep something single-region, single-writer, or even single-node if that is the right trade-off."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "distributed-systems",
+    "consistency",
+    "consensus",
+    "replication"
+  ]
+}

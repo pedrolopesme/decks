@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "035bcf5d-e4e8-47c1-bf67-30d1c2ebd010",
+  "name": "Data Stores and Modeling Interview Prep",
+  "description": "20 advanced questions on selecting, modeling, and operating data stores across relational, non-relational, and analytical workloads.",
+  "cards": [
+    {
+      "id": "0e59f01d-88f2-4fa9-b0d5-76e0fa33313a",
+      "front": "1. When is a relational database the best choice?",
+      "back": "Use a relational database when you need strong integrity, multi-row transactions, rich joins, and a stable schema for highly structured data. It is often the safest default for core business records."
+    },
+    {
+      "id": "6f7e826d-ffa8-46f2-8926-df0a7e9402e1",
+      "front": "2. When does NoSQL become the better choice?",
+      "back": "NoSQL becomes attractive when scale, access pattern, or schema flexibility matters more than arbitrary joins and rigid relational modeling. The right choice depends on the data shape, not the fashion."
+    },
+    {
+      "id": "36c7c53c-74dd-4989-b3e8-298de094abc7",
+      "front": "3. What is the cost of denormalization?",
+      "back": "Denormalization speeds reads and simplifies some query paths, but it increases storage usage and creates update coordination problems. Every duplicated field is another consistency responsibility."
+    },
+    {
+      "id": "49778587-6418-42ce-9867-660e0e88cfdb",
+      "front": "4. How do you think about schema evolution?",
+      "back": "A safe schema evolution strategy preserves old readers and old writers while letting new fields roll out gradually. Breaking migrations require a plan for backfill, dual-read, or compatibility shims."
+    },
+    {
+      "id": "895053ee-5650-4c64-8545-e94ccd68e21d",
+      "front": "5. What makes an index useful, and what makes it expensive?",
+      "back": "An index is useful when it matches high-value query patterns and avoids scanning large tables. It is expensive because every write must keep the index current, which increases write latency and storage cost."
+    },
+    {
+      "id": "6d9c3b55-8a0c-490f-95b3-3bc1562256ba",
+      "front": "6. How do primary keys influence data modeling?",
+      "back": "Primary keys define identity, access path, and often partitioning strategy. A poor key choice can create hotspots, awkward joins, or painful future migrations."
+    },
+    {
+      "id": "de659d6b-4a78-4e77-81c4-487bcd6b9dd0",
+      "front": "7. What is the difference between OLTP and OLAP?",
+      "back": "OLTP systems optimize for many small transactions and correctness, while OLAP systems optimize for large scans, aggregations, and analytical queries. Mixing those workloads in one store usually hurts one of them."
+    },
+    {
+      "id": "a1ef7474-dfdf-497f-9b6e-ceb97d948401",
+      "front": "8. Why do distributed databases care so much about partition keys?",
+      "back": "Partition keys determine data locality, throughput balance, and how expensive a query becomes. A bad partition key creates hot partitions and makes horizontal scale much less effective."
+    },
+    {
+      "id": "065689a2-a5e6-459d-b03d-4131fc8776c8",
+      "front": "9. How should you model one-to-many and many-to-many relationships?",
+      "back": "Model relationships based on access patterns, consistency requirements, and cardinality. In distributed systems, it is often better to model for the dominant query rather than preserve normalized purity at all costs."
+    },
+    {
+      "id": "d8a36b46-dcfb-4cfe-85ec-8ec9b5c2b499",
+      "front": "10. What is the practical role of transactions?",
+      "back": "Transactions protect invariants by grouping related changes into one atomic unit. The trade-off is more coordination, which can reduce throughput or make distributed transactions harder."
+    },
+    {
+      "id": "0ed5524a-db93-46a1-ae2b-43760e7e370c",
+      "front": "11. How do secondary indexes change query design?",
+      "back": "They let you query by non-primary fields without full scans, but they also impose write overhead and consistency management. Secondary indexes are powerful only if the write cost is acceptable."
+    },
+    {
+      "id": "77a4b1c4-0355-4495-8d9a-99164292a78e",
+      "front": "12. Why are migrations so risky at scale?",
+      "back": "Large migrations can lock tables, require long backfills, and produce incompatible states during rollout. A safe plan usually includes incremental changes and a clear rollback path."
+    },
+    {
+      "id": "d10dca44-7299-45fe-98c0-b2597913ee71",
+      "front": "13. What is polyglot persistence, and when is it justified?",
+      "back": "Polyglot persistence uses different storage technologies for different workloads, such as relational for transactions and key-value for caching. It is justified when one database cannot satisfy all requirements without major compromise."
+    },
+    {
+      "id": "ddd4487d-aeb5-41fe-bacd-eb9dd15a4e2c",
+      "front": "14. How do TTLs affect data modeling?",
+      "back": "TTL is useful for expiring ephemeral data, but it can silently remove records that other parts of the system still expect. You need to model expiry as part of the business lifecycle, not as an afterthought."
+    },
+    {
+      "id": "e7f5f4aa-fd5f-4366-a6fb-7ecc0261010b",
+      "front": "15. What is the trade-off between strong consistency and availability in data storage?",
+      "back": "Stronger consistency usually needs more coordination, which increases latency and can reduce availability during failures. The key question is whether stale reads or temporary unavailability is more damaging."
+    },
+    {
+      "id": "b8e14b25-98c8-4a57-a8ca-80922dc187d7",
+      "front": "16. How do backups and restore testing affect architecture?",
+      "back": "A backup is only useful if restore has been tested and the recovery time is acceptable. Staff-level storage design includes disaster recovery, not just day-to-day reads and writes."
+    },
+    {
+      "id": "9e02aa34-2141-4a3b-9db3-0fd01a925f46",
+      "front": "17. What is the danger of overusing document databases?",
+      "back": "Document stores can hide modeling mistakes by making it easy to stuff everything into one record. That convenience can become painful when you need cross-document transactions or complex queries."
+    },
+    {
+      "id": "fd4292e4-9956-44a8-8750-54c1bb6a7fd1",
+      "front": "18. How should you model high-cardinality event data?",
+      "back": "High-cardinality data usually needs careful partitioning, retention policies, and sometimes a separate analytical store. The model should avoid forcing all event history into a single hot operational database."
+    },
+    {
+      "id": "b2efff16-9568-4ba0-a4e5-36fb728099d3",
+      "front": "19. What is the role of write amplification in storage decisions?",
+      "back": "Write amplification is the hidden cost of indexes, replicas, log structures, and compaction. It often determines whether a design remains efficient under heavy ingest."
+    },
+    {
+      "id": "21687616-f43c-4d52-a76f-db23d32f2929",
+      "front": "20. When should you redesign the data model instead of just adding another index?",
+      "back": "When the query pattern itself is mismatched to the current shape, more indexes just add complexity and write cost. If the access pattern has changed structurally, the model probably needs to change too."
+    }
+  ],
+  "author": "Gemini",
+  "tags": [
+    "databases",
+    "data-modeling",
+    "system-design",
+    "storage"
+  ]
+}
